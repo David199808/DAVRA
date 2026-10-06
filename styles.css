@@ -26,7 +26,7 @@ h1 {
 }
 
 
-.inicio {
+.inicio, .hombre, .mujer {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: bolder;
     font-size: 20px;
@@ -37,29 +37,15 @@ h1 {
     border-radius: 3px;
 }
 
+.carrito {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+    text-decoration: none;
+    color: #444;
+    margin: 100px;
+}
 
-.hombre {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight: bolder;
-    font-size: 20px;
-    text-decoration: none;
-    color: #444;
-    margin: 100px;
-    border-bottom: 2px solid #555;
-    border-radius: 3px;
-    
-}
-.mujer {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight: bolder;
-    font-size: 20px;
-    text-decoration: none;
-    color: #444;
-    margin: 100px;
-    border-bottom: 2px solid #555;
-    border-radius: 3px;
-    
-}
 .contenedor-padre {
     margin: auto;
     margin-left: 600px;
