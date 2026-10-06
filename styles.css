@@ -1,0 +1,101 @@
+body {
+    margin: 15px;
+    background: #fff;
+
+}
+h1 {
+    color: #333;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 60px;
+    background-color:gainsboro;
+    width: 450px;
+    margin:auto;
+    margin-bottom: 100px;
+    margin-top: 10px;
+    border-radius: 20px;
+    
+}
+
+
+.rutas {
+    width:auto;
+    text-align: center;
+    margin: 0px 0 20px 0;
+
+}
+
+
+.inicio {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+    text-decoration: none;
+    color: #444;
+    margin: 100px;
+    border-bottom: 2px solid #555;
+    border-radius: 3px;
+}
+
+
+.hombre {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+    text-decoration: none;
+    color: #444;
+    margin: 100px;
+    border-bottom: 2px solid #555;
+    border-radius: 3px;
+    
+}
+.mujer {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+    text-decoration: none;
+    color: #444;
+    margin: 100px;
+    border-bottom: 2px solid #555;
+    border-radius: 3px;
+    
+}
+.contenedor-padre {
+    margin: auto;
+    margin-left: 600px;
+    margin-right: 600px;
+    text-align: center;
+    
+}
+.foto1 {
+    height: 350px;
+    box-shadow: 0 0 15px #000;
+    margin: 50px;
+    
+}
+.foto2 {
+    height: 350px;
+    box-shadow: 0 0 15px #000;
+    margin: 50px
+}
+.foto3 {
+    height: 350px;
+    box-shadow: 0 0 15px #000;
+    margin: 50px
+}
+.foto4 {
+    height: 350px;
+    box-shadow: 0 0 15px #000;
+    margin: 50px
+}
+.foto5 {
+    height: 350px;
+    box-shadow: 0 0 15px #000;
+    margin: 50px
+}
+.foto6 {
+    height: 350px;
+    box-shadow: 0 0 15px #000;
+    margin: 50px
+}
+
