@@ -4,7 +4,7 @@ body {
 
 }
 
-
+/* TITULO PRINCIPAL */
 h1 {
     color: #333;
     text-align: center;
@@ -20,8 +20,8 @@ h1 {
     
 }
 
-
-.rutas {
+/* BARRA DE NAVEGACIÓN */
+.menu {
     width:auto;
     text-align: center;
     margin: 0px 0 20px 0;
@@ -29,7 +29,7 @@ h1 {
 }
 
 
-.inicio, .hombre, .mujer {
+.menu__link {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: bolder;
     font-size: 25px;
@@ -40,27 +40,21 @@ h1 {
     border-radius: 3px;
 }
 
-.inicio:hover, .hombre:hover, .mujer:hover, .carrito:hover {
+.menu__link:hover {
     color: #222;
 }
 
-.carrito {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight: bolder;
+.menu__link--activo {
+    color: #333;
+    border-bottom: 3px solid #222;
+}
+
+.menu__link--carrito {
     font-size: 24px;
-    text-decoration: none;
-    color: #444;
-    margin: 100px;
 }
 
-.contenedor-padre {
-    margin: auto;
-    margin-left: 50px;
-    margin-right: 50px;
-    text-align: auto;
-    
-}
 
+/* SALUDO INICIO */
 .bienvenida {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align:left;
@@ -71,19 +65,18 @@ h1 {
 }
 
 
-
+/* CONTENIDO INICIO - bloque: destacado*/
 .destacado {
-    background-color: gainsboro;
     text-align: center;
     margin-left: 400px;
     margin-right: 400px;
     background-color:whitesmoke;
-    box-shadow: 0 0 10px #777;
-    
-    
+    box-shadow: 0 0 10px #777;   
 }
 
-.destacado1 {
+
+/* ELEMENTO - destacado__imagen */
+.destacado__imagen {
     margin-top: 50px;
     margin-bottom: 50px;
     margin-right: 50px;
@@ -92,7 +85,7 @@ h1 {
     box-shadow: 0 0 20px #333;
 }
 
-.destacado2 {
+.destacado__imagen2 {
     margin-top: 50px;
     margin-bottom: 50px;
     margin-left: 50px;
@@ -101,6 +94,9 @@ h1 {
     box-shadow: 0 0 20px #333;
 }
 
+
+
+/* sección de productos */
 .producto {
     text-align: center;
     display: inline-block;
@@ -110,7 +106,18 @@ h1 {
 }
 
 
-.foto1, .foto2, .foto3, .foto4, .foto5, .foto6 {
+/* contenedor padre de los productos */
+.contenedor-padre {
+    margin: auto;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: auto;
+    
+}
+
+
+/* imagen de los productos */
+.producto__imagen {
     width: 350px;
     border: solid 5px gainsboro;
     border-radius: 15px;
@@ -119,6 +126,29 @@ h1 {
 }
 
 
+/* titulo de los productos */
+.producto__titulo {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* precio de los productos */
+.producto__precio {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* talla de los productos */
+.producto__talla {
+    font-size: 16px;
+    color: #666;
+    margin: 10px 0;
+}
+
+/* PIE DE PAGINA */
 footer {
     text-align: center;
     padding: 20px;
