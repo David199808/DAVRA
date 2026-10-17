@@ -8,8 +8,9 @@
         <title>Davra</title>
     </head>
     <body> 
-        <header>
-            <h1>DAVRAWEAR</h1>  <!-- TITULO PRINCIPAL -->
+        <!-- TITULO PRINCIPAL -->
+        <header class="header">
+            <img class="header__imagen" src="imagenes/DAvRA-logo-paquete/01_principal/daura-simbolo-blanco-transparente.png">
         </header>
 
         <!-- BARRA DE NAVEGACION -->
@@ -17,23 +18,30 @@
             <a class="menu__link menu__link--activo" href="index.html">INICIO</a>
             <a class="menu__link" href="secciones/hombre.html">HOMBRE</a>
             <a class="menu__link" href="secciones/mujer.html">MUJER</a>
-            <a class="menu__link menu__link--carrito" href="./secciones/carrito.html">🛒 Carrito</a>
+            <a class="menu__link" href="./secciones/carrito.html">🛒 CARRITO</a>
         </nav>
 
-        <main> <!--CONTENIDO PRINCIPAL-->
-            <section class="bienvenida">
-                <h2>¡Bienvenidos a DAVRAWEAR!</h2>
-                <p>Ropa urbana streetwear para hombre y mujer. <strong>Explora nuestras colecciones.</strong></p>
-            </section>
+        <!--CONTENIDO PRINCIPAL-->
+        <main> 
+            <div class="bienvenida">
+                <section class="bienvenida__contenedor">
+                <h2 class="bienvenida__subtitulo">¡Bienvenidos a DAVRAWEAR!</h2>
+                <p class="bienvenida__descripcion">Ropa urbana streetwear para hombre y mujer. <strong class="bienvenida__resaltado">Explora nuestras colecciones.</strong></p>
+                </section>
+            </div>
 
-            <section class="destacado">
-                <img class="destacado__imagen" src="imagenes/mujer/top-cuello-tortuga.jpeg" alt="top rojo cuello tortuga">
-                <img class="destacado__imagen destacado__imagen--secundaria" src="imagenes/conjuntonegro.jpg" alt="conjunto negro 2 piezas">
-            </section>
+            <!-- IMAGENES DESTACADO -->
+                <section class="destacado__contenedor">
+                    <a class="destacado__link" href="secciones/hombre.html">Colección Hombre</a>
+                    <img class="destacado__imagen" src="imagenes/camisa-negra-estampado.jpg" alt="camisa-negra-estampado">
+                    <a class="destacado__link" href="secciones/mujer.html">Colección Mujer</a>
+                    <img class="destacado__imagen" src="imagenes/mujer/blusa-cuello-tortuga-negra.jpeg" alt="blusa-cuello-tortuga-negra">
+                </section>
         </main>
         
-        <footer> <!--PIE DE PAGINA-->
-            <p>&copy; 2026 DAVRAWEAR</p>
+        <!--PIE DE PAGINA-->
+        <footer> 
+            <p>&copy; 2026 DAVRAWEAR <br>JUAN DAVID GOMEZ</p>
         </footer>
     </body>
 </html>

@@ -1,0 +1,38 @@
+DAURA — PAQUETE DE LOGO
+=======================
+
+01_principal/
+  daura-logo-negro-transparente.png    Logo completo, fondo transparente
+  daura-logo-blanco-transparente.png   Para fondos oscuros o fotos
+  daura-logo-negro-fondo-blanco.png    Listo para usar
+  daura-logo-blanco-fondo-negro.png    Listo para usar
+  daura-simbolo-*.png                  Solo la llama, sin el texto
+
+02_redes/
+  perfil-1080-fondo-negro.png          Foto de perfil IG / FB / TikTok
+  perfil-1080-fondo-blanco.png         Alternativa clara
+  post-1080x1080-*.png                 Publicacion cuadrada
+  historia-1080x1920-negro.png         Historia / Reel
+  portada-facebook-1640x664.png        Portada de pagina
+
+03_web/
+  favicon.ico                          Icono de navegador
+  icono-16 a 512px.png                 Iconos de app y web
+
+04_marca_agua/
+  marca-agua-blanca-suave/media/fuerte.png   Para fotos oscuras
+  marca-agua-negra-suave/media/fuerte.png    Para fotos claras
+
+05_vector/
+  daura-logo-negro.svg     ESTE ES EL IMPORTANTE
+  daura-logo-blanco.svg    Escala infinito sin perder calidad
+  daura-simbolo-*.svg      Usalo para vallas, camisetas, bordado
+
+REGLAS DE USO
+-------------
+1. Para foto de perfil usa SIEMPRE el simbolo solo.
+   El texto DAURA no se lee en un circulo pequeno.
+2. Deja aire alrededor del logo: minimo el ancho de una letra "D".
+3. No lo estires. Escalalo siempre proporcional.
+4. Sobre fotos usa la version blanca, nunca la negra.
+5. Para imprenta, bordado o vinilo entrega el SVG, no el PNG.
