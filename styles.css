@@ -4,6 +4,9 @@ body {
     font-family: sans-serif;
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 
 
 
@@ -33,29 +36,27 @@ body {
 /*-----BARRA DE NAVEGACIÓN-----*/
 
 .menu {
-    font-family: sans-serif;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
     margin-top: 10px;
-    
-    border-top: none ;
     padding: 10px;
     box-shadow: 0px 0px 5px #000;
     position: sticky;
     top: 0;
     backdrop-filter: blur(8px);
-    box-sizing: border-box;
 }
 
 .menu__link {
+    display: inline-block;
     font-weight: bolder;
     font-size: 1.2rem;
     text-decoration: none;
     padding: 4px;
     color: #fff;
     background-color: #000;
-    transform: skewX(-20deg);
+    transform: skewX(-20deg); 
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -72,20 +73,21 @@ body {
 
 /*-----MENSAJE DE BIENVENIDA----- */
 
-.bienvenida__contenedor {
-    font-family: sans-serif;
+.bienvenida {
+    max-width: 700px;
+    margin: 30px auto 50px;
+    padding: 0 20px;
+    text-align: center;
     color: #000;
-    font-size: 1.3rem;
-    margin-top: 30px;
-    margin-bottom: 50px;
 }
 
-.bienvenida__subtitulo {
+.bienvenida__titulo {
     text-align: center;
+    font-size: clamp(1.8rem, 6vw, 3rem);
 }
 
 .bienvenida__descripcion {
-    margin-left: 20px;
+    font-size: 1.1rem;
 }
 
 /*-----MENSAJE DE BIENVENIDA END----- */
@@ -96,31 +98,39 @@ body {
 /*-----CONTENIDO DESTACADO-----*/
 
 .destacado {
+    max-width: 900px;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit);
-    justify-content: center;
-    place-items: center;
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: 0 20px;
 }
 
 .destacado__imagen {
     width: 100%;
+    max-width: 400px;
+    align-self: center;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+    box-shadow: 0px 10px 10px #333;
 }
 
 .destacado__link {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     text-decoration: none;
-    gap: 10px;
-    font-family: sans-serif;
-    font-size: 1.8rem;
-    font-style: italic;
+}
+
+.destacado__titulo {
+    width: 100%;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 10px;
     background-color: #000;
     color: #fff;
 }
-
-.destacado__link::before, .destacado__link::after {
+.destacado__titulo::before, .destacado__titulo::after {
     content: "";
     display: inline-block;
     width: 20px;
