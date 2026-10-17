@@ -10,8 +10,7 @@ body {
 
 
 
-
-
+/*-----INDEX-----*/
 /*----LOGO HEADER-----*/
 
 .header {
@@ -141,61 +140,46 @@ body {
     background-position: center;
 }
 /*-----CONTENIDO DESTACADO END-----*/
+/*-----INDEX END-----*/
 
 
 
 
-/* sección de productos */
-.producto {
+
+
+/*-----HOMBRE/MUJER-----*/
+/*-----PRODUCTOS HOMBRE Y MUJER----- */
+
+.titulo-pagina {
     text-align: center;
-    display: inline-block;
-    width: 350px;
-    vertical-align: top;
-    margin: 100px;
+    font-size: clamp(1.6rem, 5vw, 2.5rem);
+    margin: 30px 20px;
+}
+.productos {
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 300px));
+    gap: 50px;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 20px 20px;
 }
 
-
-/* contenedor padre de los productos */
-.contenedor-padre {
-    margin: auto;
-    margin-left: 50px;
-    margin-right: 50px;
-    text-align: auto;
-    
-}
-
-
-/* imagen de los productos */
 .producto__imagen {
-    width: 350px;
-    border: solid 5px gainsboro;
-    border-radius: 15px;
-    box-shadow: 0 0 15px #333;
-    margin: 50px; 
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
 }
 
 
-/* titulo de los productos */
-.producto__titulo {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 10px 0;
-}
 
-/* precio de los productos */
-.producto__precio {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin: 10px 0;
-}
+/*-----PRODUCTOS HOMBRE END----- */
+/*-----HOMBRE END-----*/
 
-/* talla de los productos */
-.producto__talla {
-    font-size: 16px;
-    color: #666;
-    margin: 10px 0;
-}
+
+
+
 
 /* PIE DE PAGINA */
 footer {
