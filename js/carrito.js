@@ -48,9 +48,9 @@ export class Carrito {
   }
 
   mostrarCarrito() {
-    for (const { nombre, talla, precio } of this.items) {
+    this.items.forEach(({ nombre, talla, precio }) => {
       console.log(`${nombre} - Talla: ${talla} - $${precio}`);
-    }
+    });
     console.log(`Total: $${this.calcularTotal()}`);
   }
 }
