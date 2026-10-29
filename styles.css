@@ -1,190 +1,188 @@
 body {
-    margin: 0;
-    background: #fff;
-    font-family: sans-serif;
+  margin: 0;
+  font-family: sans-serif;
 }
 
-*, *::before, *::after {
-    box-sizing: border-box;
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-
-
 
 /*-----INDEX-----*/
 /*----LOGO HEADER-----*/
 
 .header {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background-color: #000;
-    box-shadow: 0px 0px 5px #000;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #000;
+  box-shadow: 0px 0px 5px #000;
 }
 
 .header__imagen {
-    width: 150px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+  width: 150px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 /*----LOGO HEADER END-----*/
 
-
-
-
 /*-----BARRA DE NAVEGACIÓN-----*/
 
 .menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 10px;
-    padding: 10px;
-    box-shadow: 0px 0px 5px #000;
-    position: sticky;
-    top: 0;
-    backdrop-filter: blur(8px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 10px;
+  padding: 10px;
+  box-shadow: 0px 0px 5px #000;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(8px);
 }
 
 .menu__link {
-    display: inline-block;
-    font-weight: bolder;
-    font-size: 1.2rem;
-    text-decoration: none;
-    padding: 4px;
-    color: #fff;
-    background-color: #000;
-    transform: skewX(-20deg); 
-    -webkit-tap-highlight-color: transparent;
+  display: inline-block;
+  font-weight: bolder;
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding: 4px;
+  color: #fff;
+  background-color: #000;
+  transform: skewX(-20deg);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .menu__link--activo {
-    background-color: #fff;
-    color: #000;
-    border: 1px solid #000;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
 }
 
 /*-----BARRA DE NAVEGACIÓN END-----*/
 
-
-
-
 /*-----MENSAJE DE BIENVENIDA----- */
 
 .bienvenida {
-    max-width: 700px;
-    margin: 30px auto 50px;
-    padding: 0 20px;
-    text-align: center;
-    color: #000;
+  max-width: 700px;
+  margin: 30px auto 50px;
+  padding: 0 20px;
+  text-align: center;
+  color: #000;
 }
 
 .bienvenida__titulo {
-    text-align: center;
-    font-size: clamp(1.8rem, 6vw, 3rem);
+  text-align: center;
+  font-size: clamp(1.8rem, 6vw, 3rem);
 }
 
 .bienvenida__descripcion {
-    font-size: 1.1rem;
+  font-size: 1.1rem;
 }
 
 /*-----MENSAJE DE BIENVENIDA END----- */
 
-
-
-
 /*-----CONTENIDO DESTACADO-----*/
 
 .destacado {
-    max-width: 900px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-    gap: 0 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 0 20px;
 }
 
 .destacado__imagen {
-    width: 100%;
-    max-width: 400px;
-    align-self: center;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    display: block;
-    box-shadow: 0px 10px 10px #333;
+  width: 100%;
+  max-width: 400px;
+  align-self: center;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0px 10px 10px #333;
 }
 
 .destacado__link {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
 }
 
 .destacado__titulo {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    background-color: #000;
-    color: #fff;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: #000;
+  color: #fff;
 }
-.destacado__titulo::before, .destacado__titulo::after {
-    content: "";
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-image: url(imagenes/DAvRA-logo-paquete/01_principal/daura-simbolo-blanco-transparente.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+.destacado__titulo::before,
+.destacado__titulo::after {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url(imagenes/DAvRA-logo-paquete/01_principal/daura-simbolo-blanco-transparente.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 /*-----CONTENIDO DESTACADO END-----*/
 /*-----INDEX END-----*/
-
-
-
-
-
 
 /*-----HOMBRE/MUJER-----*/
 /*-----PRODUCTOS HOMBRE Y MUJER----- */
 
 .titulo-pagina {
-    text-align: center;
-    font-size: clamp(1.6rem, 5vw, 2.5rem);
-    margin: 30px 20px;
+  text-align: center;
+  font-size: clamp(1.6rem, 5vw, 2.5rem);
+  margin: 30px 20px;
 }
 .productos {
-    max-width: 1200px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 300px));
-    gap: 50px;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 20px 20px;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 300px));
+  gap: 50px;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px 20px;
 }
 
 .producto__imagen {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
 }
 
+.producto__boton:hover {
+  background-color: #fff;
+  color: #000;
+  border-color: #000;
+}
 
+.producto__boton {
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  border-radius: 20px;
+  padding: 12px 16px;
+  border: 1px solid #000;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
 
 /*-----PRODUCTOS HOMBRE END----- */
 /*-----HOMBRE END-----*/
 
-
-
-
-
 /* PIE DE PAGINA */
 footer {
-    text-align: center;
-    padding: 20px;
-    color: #777;
-    font-size: 14px;
+  text-align: center;
+  padding: 20px;
+  color: #777;
+  font-size: 14px;
 }
