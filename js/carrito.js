@@ -3,6 +3,7 @@
 // ------CLASES-------
 // CARRITO V1.1 Class
 // -----CARRITO V1.3 Modulos-----
+//-----CARRITO V1.4 (mostrarCarrito con forEach y callback)
 
 import { productos } from "./productos.js";
 
@@ -48,9 +49,13 @@ export class Carrito {
   }
 
   mostrarCarrito() {
+    // forEach recorre el array de productos del carrito (this.items).
+    // El callback (la arrow function) lo ejecuta forEach, una vez por cada producto.
+    // { nombre, talla, precio }:→ desestructuracion, saca esos 3 valores de cada producto.
     this.items.forEach(({ nombre, talla, precio }) => {
-      console.log(`${nombre} - Talla: ${talla} - $${precio}`);
+      console.log(`${nombre} - Talla: ${talla} - $${precio}`); // Una linea por producto.
     });
+    // El total va a afuera del forEach para imprimirse UNA sola vez, al final.
     console.log(`Total: $${this.calcularTotal()}`);
   }
 }
