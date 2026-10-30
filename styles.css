@@ -187,9 +187,9 @@ body {
 
 .producto__boton--agregado,
 .producto__boton--agregado:hover {
-  background-color: #fff;
-  color: #000;
-  border-color: #000;
+  background-color: #595959;
+  color: #fff;
+  border-color: #595959;
 }
 
 /*-----PRODUCTOS HOMBRE END----- */
