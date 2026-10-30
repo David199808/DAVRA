@@ -176,6 +176,12 @@ body {
     color 0.2s;
 }
 
+.producto__boton--agregado {
+  background-color: #595959;
+  color: #fff;
+  border-color: #595959;
+}
+
 /*-----PRODUCTOS HOMBRE END----- */
 /*-----HOMBRE END-----*/
 
