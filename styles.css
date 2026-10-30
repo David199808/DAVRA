@@ -157,12 +157,6 @@ body {
   display: block;
 }
 
-.producto__boton:hover {
-  background-color: #fff;
-  color: #000;
-  border-color: #000;
-}
-
 .producto__boton {
   width: 100%;
   background-color: #000;
@@ -174,12 +168,28 @@ body {
   transition:
     background-color 0.2s,
     color 0.2s;
+  border-color: 0, 2;
+}
+
+@media (hover: hover) {
+  .producto__boton:hover {
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
+  }
 }
 
 .producto__boton--agregado {
   background-color: #595959;
   color: #fff;
   border-color: #595959;
+}
+
+.producto__boton--agregado,
+.producto__boton--agregado:hover {
+  background-color: #fff;
+  color: #000;
+  border-color: #000;
 }
 
 /*-----PRODUCTOS HOMBRE END----- */
