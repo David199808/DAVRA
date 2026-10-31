@@ -168,7 +168,7 @@ body {
   transition:
     background-color 0.2s,
     color 0.2s;
-  border-color: 0, 2;
+  border-color: 0.2s;
 }
 
 @media (hover: hover) {
