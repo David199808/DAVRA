@@ -4,13 +4,17 @@ import { Carrito } from "./carrito.js";
 
 const carritoNuevo = new Carrito(); // Un solo carrito aqui arriba
 
-console.log("¡tienda.js conectado"); // Conectado a hombre.html antes del cierre del body
-
 const contador = document.querySelector(".menu__contador"); // selecciona el contador (<span> del html)
 
 const botones = document.querySelectorAll(".producto__boton"); // Selecciona todo los botones de la pagina web
 
-console.log(botones.length); // total
+// actualizarContador: escribe en el menu cuantos productos tiene el carrito
+function actualizarContador() {
+  // Es una función para no repetir la linea (DRY): se usa al cargar y en cada click
+  contador.textContent = carritoNuevo.items.length; // Cantidad de prodcutos -> texto del contador.
+}
+
+actualizarContador(); // al cargar: muestra lo que quedo guardado en el localStorage.
 
 botones.forEach((boton) => {
   // capa 1: para cada botón
@@ -19,11 +23,11 @@ botones.forEach((boton) => {
     const id = Number(boton.dataset.id); // "3" (texto) -> 3 (número)
     carritoNuevo.agregarProducto(id); // tu carrito, no el molde
     console.log(carritoNuevo.items); // ver que tiene
-    contador.textContent = carritoNuevo.items.length; // Se cuenta cuantos productos hay debtro del carrito, y el Numero se escribe en el menu visual (5) segun cuantos elementos se agregue al carrito (DOM: textContent)
+    actualizarContador(); // Mantiene el contador 1+1+1
     boton.textContent = "✓ Agregado"; // Cambia el texto del boton a "✓ Agregado"
-    boton.classList.add("producto__boton--agregado"); // Agregar estilos de esta clase
+    boton.classList.add("producto__boton--agregado"); // Agregar la clase que pinta el boton de "agregado".
+    // setTimeout: espera 1000 ms (1 segundo) y despues ejecuta el callback
     setTimeout(() => {
-      // funcion que espera cierto tiempo y despues ejecuta un callback
       boton.textContent = "Agregar al carrito"; // Cuando se agote el tiempo vuelve y excribe este texto
       boton.classList.remove("producto__boton--agregado"); // Cuando se agote el tiempo remueve esta clase
     }, 1000); // Cuanto esperar en milisegundos

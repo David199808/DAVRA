@@ -13,7 +13,16 @@ import { productos } from "./productos.js";
 
 export class Carrito {
   constructor() {
-    this.items = [];
+    this.items = []; // Por defecto carrito vacío.
+    const guardado = localStorage.getItem("carrito"); // saca el texto del casillero (o null).
+    if (guardado) {
+      // si había algo guardado...
+      this.items = JSON.parse(guardado); //...desempácalo y usalo como items.
+    }
+  }
+
+  guardar() {
+    localStorage.setItem("carrito", JSON.stringify(this.items));
   }
 
   agregarProducto(id) {
@@ -22,6 +31,7 @@ export class Carrito {
       if (id === producto.id) {
         // Si el id que recibio la función es igual al id de este producto
         this.items.push(producto); // Entonces agrega ese producto (objeto completo) al carrito
+        this.guardar(); // cada cambio se guarda en localStorage para que no se pierda al recargar.
         return; // sale de toda la función: ya se agregó, no hay que seguir.
       }
     }
@@ -43,6 +53,7 @@ export class Carrito {
       if (this.items[i].id === id) {
         // si el producto en la posición i tiene ese id...
         this.items.splice(i, 1); // ...quita 1 elemento desde la posición i
+        this.guardar(); // cada cambio se guarda en localStorage para que no se pierda al recargar.
         break; // y para: solo quitamos uno
       }
     }
