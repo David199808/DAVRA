@@ -8,6 +8,8 @@ const total = document.querySelector(".carrito__total");
 
 const mensajeVacio = document.querySelector(".carrito__vacio");
 
+const totalProductos = document.querySelector(".carrito__cantidad");
+
 // mostrarCarrito: dibuja en la pagina los productos del carrito y el total.
 // Esta es una funcion porque se usa 2 veces: al cargar la pagina y despues de cada "Quitar".
 
@@ -36,6 +38,13 @@ function mostrarCarrito() {
   }
   // El total lo calcula la clase (calcularTotal) y se escribe en el parrafo.
   total.textContent = `Total: $${carritoNuevo.calcularTotal()}`;
+
+  const cantidadTotal = carritoNuevo.items.length;
+  if (cantidadTotal === 1) {
+    totalProductos.textContent = `Tienes ${cantidadTotal} producto`;
+  } else {
+    totalProductos.textContent = `Tienes ${cantidadTotal} productos`;
+  }
 }
 
 mostrarCarrito(); // Al cargar la página: dibuja el carrito por primera vez.
