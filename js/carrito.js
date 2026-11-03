@@ -47,16 +47,27 @@ export class Carrito {
     return total; // Devuelve el total cuando el bucle termina de recorrer el carrito
   }
 
+  //quitarProducto(id) {
+  //for (let i = 0; i < this.items.length; i++) {
+  // recorre el carrito, posición por posición
+  //if (this.items[i].id === id) {
+  // si el producto en la posición i tiene ese id...
+  //this.items.splice(i, 1); // ...quita 1 elemento desde la posición i
+  //this.guardar(); // cada cambio se guarda en localStorage para que no se pierda al recargar.
+  //break; // y para: solo quitamos uno
+  //}
+  //}
+  //}
+
   quitarProducto(id) {
-    for (let i = 0; i < this.items.length; i++) {
-      // recorre el carrito, posición por posición
-      if (this.items[i].id === id) {
-        // si el producto en la posición i tiene ese id...
-        this.items.splice(i, 1); // ...quita 1 elemento desde la posición i
-        this.guardar(); // cada cambio se guarda en localStorage para que no se pierda al recargar.
-        break; // y para: solo quitamos uno
-      }
+    // findIndex busca en el carrito la posicion del producto con ese id (-1 si no está).
+    const posicion = this.items.findIndex((producto) => producto.id === id);
+    if (posicion === -1) {
+      // -1 = no está en el carrito. Se compara con === -1 y no con !posicion (0 es falsy).
+      return; // no hay nada que quitar: sale sin hacer nada.
     }
+    this.items.splice(posicion, 1); // Quita 1 elemento desde la posicion
+    this.guardar(); // Guarda los cambios en localStorage.
   }
 
   mostrarCarrito() {
