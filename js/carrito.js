@@ -39,25 +39,8 @@ export class Carrito {
   }
 
   calcularTotal() {
-    let total = 0;
-    for (const { precio } of this.items) {
-      // Recorre el precio de los elementos del carrito, aqui se esta utilizando desestructuracion por eso llama de una vez la propiedad
-      total += precio; // El total es la suma del precio de cada elemento
-    }
-    return total; // Devuelve el total cuando el bucle termina de recorrer el carrito
+    return this.items.reduce((total, producto) => total + producto.precio, 0);
   }
-
-  //quitarProducto(id) {
-  //for (let i = 0; i < this.items.length; i++) {
-  // recorre el carrito, posición por posición
-  //if (this.items[i].id === id) {
-  // si el producto en la posición i tiene ese id...
-  //this.items.splice(i, 1); // ...quita 1 elemento desde la posición i
-  //this.guardar(); // cada cambio se guarda en localStorage para que no se pierda al recargar.
-  //break; // y para: solo quitamos uno
-  //}
-  //}
-  //}
 
   quitarProducto(id) {
     // findIndex busca en el carrito la posicion del producto con ese id (-1 si no está).
