@@ -26,16 +26,16 @@ export class Carrito {
   }
 
   agregarProducto(id) {
-    for (let producto of productos) {
-      // Recorre producto por producto de la lista
-      if (id === producto.id) {
-        // Si el id que recibio la función es igual al id de este producto
-        this.items.push(producto); // Entonces agrega ese producto (objeto completo) al carrito
-        this.guardar(); // cada cambio se guarda en localStorage para que no se pierda al recargar.
-        return; // sale de toda la función: ya se agregó, no hay que seguir.
-      }
+    // find: busca en el catalogo el producto con ese id (si no existe, prenda queda undefined)
+    const prenda = productos.find((producto) => producto.id === id);
+    if (!prenda) {
+      // SI NO existe / no hay nada
+      throw new Error(`El producto con id ${id} no existe`); // lanza el error y detiene la función
     }
-    throw new Error(`El producto con id ${id} no existe`); // throw: lanza un error y detiene la función. new Error crea el error con su mensaje.
+
+    // SI EXISTE agregala y guarda
+    this.items.push(prenda);
+    this.guardar();
   }
 
   calcularTotal() {
