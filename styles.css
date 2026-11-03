@@ -30,6 +30,8 @@ body {
 /*-----BARRA DE NAVEGACIÓN-----*/
 
 .menu {
+  max-width: 1250px;
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -135,16 +137,26 @@ body {
 /*-----HOMBRE/MUJER-----*/
 /*-----PRODUCTOS HOMBRE Y MUJER----- */
 
+.buscador {
+  display: flex;
+  margin: auto;
+  margin-top: 50px;
+  font-size: 1.5rem;
+  border-radius: 20px;
+  border: 1px solid #595959;
+  padding: 10px 15px;
+}
+
 .titulo-pagina {
   text-align: center;
   font-size: clamp(1.6rem, 5vw, 2.5rem);
   margin: 30px 20px;
 }
 .productos {
-  max-width: 1200px;
+  max-width: 1250px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 300px));
-  gap: 50px;
+  gap: 100px;
   justify-content: center;
   margin: 0 auto;
   padding: 20px 20px;
