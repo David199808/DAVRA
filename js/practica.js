@@ -1,41 +1,17 @@
 import { productos } from "./productos.js";
 
 //function contarPorCategoria(categoria) {
-//  let total = 0;
-//  for (let producto of productos) {
-//    if (producto.categoria === categoria) {
-//      total += 1;
-//    }
-//  }
-//  return total;
+//let total = 0;
+//productos.forEach((producto) => {
+//if (producto.categoria === categoria) {
+//total += 1;
+//}
+//});
+//return total;
 //}
 
 //console.log(contarPorCategoria("mujer"));
-
-//function contarPorCategoria(categoria) {
-//  let total = 0;
-//  productos.forEach((producto) => {
-//    if (producto.categoria === categoria) {
-//      total += 1;
-//    }
-//  });
-//  return total;
-//}
-
-console.log(contarPorCategoria("mujer"));
-console.log(contarPorCategoria("hombre"));
-
-//function productoMasCaro() {
-//  let mayor = productos[0];
-//  for (let producto of productos) {
-//    if (producto.precio > mayor.precio) {
-//      mayor = producto;
-//    }
-//  }
-//  return mayor;
-//}
-
-//console.log(productoMasCaro());
+//console.log(contarPorCategoria("hombre"));
 
 function productoMasCaro() {
   let mayor = productos[0];
@@ -50,29 +26,16 @@ function productoMasCaro() {
 console.log(productoMasCaro());
 
 //function nombresDeTalla(talla) {
-//  let items = [];
-//  for (let producto of productos) {
-//    if (producto.talla === talla) {
-//      items.push(producto.nombre);
-//    }
-//  }
-//  return items;
+//let items = [];
+//productos.forEach((producto) => {
+//if (producto.talla === talla) {
+//items.push(producto.nombre);
+//}
+//});
+//return items;
 //}
 
-console.log(nombresDeTalla("L"));
-console.log(nombresDeTalla("M"));
-
-function nombresDeTalla(talla) {
-  let items = [];
-  productos.forEach((producto) => {
-    if (producto.talla === talla) {
-      items.push(producto.nombre);
-    }
-  });
-  return items;
-}
-
-console.log(nombresDeTalla("L"));
+//console.log(nombresDeTalla("L"));
 
 function totalPorCategoria(categoria) {
   let total = 0;
@@ -96,4 +59,32 @@ function contarPorCategoria(categoria) {
   return contador;
 }
 
-console.log(contarPorCategoria("mujer"));
+//console.log(contarPorCategoria("mujer"));
+
+function contarPorCategoriaC(categoria) {
+  const filtrados = productos.filter((producto) => producto.categoria === categoria);
+  return filtrados.length;
+}
+
+console.log(contarPorCategoriaC("mujer"));
+
+function nombresDeTallaB(talla) {
+  const productosDeTalla = productos.filter((producto) => producto.talla === talla);
+  const nombres = productosDeTalla.map((producto) => producto.nombre);
+  return nombres;
+}
+
+console.log(nombresDeTallaB("L"));
+console.log(nombresDeTallaB("S"));
+console.log(nombresDeTallaB("M"));
+
+function ordenarPorPrecio() {
+  const copia = [...productos];
+  copia.sort((a, b) => a.precio - b.precio);
+  return copia;
+}
+
+const ordenados = ordenarPorPrecio();
+const lineas = ordenados.map((producto) => `${producto.nombre} - $${producto.precio}`);
+console.log(lineas);
+console.log(productos[0].precio);
