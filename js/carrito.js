@@ -21,8 +21,14 @@ export class Carrito {
     }
   }
 
+  // Guardar en localStorage.
   guardar() {
     localStorage.setItem("carrito", JSON.stringify(this.items));
+  }
+
+  // Contar total de unidades de la prenda
+  contarUnidades() {
+    return this.items.reduce((unidades, producto) => unidades + producto.cantidad, 0);
   }
 
   agregarProducto(id) {
@@ -33,13 +39,23 @@ export class Carrito {
       throw new Error(`El producto con id ${id} no existe`); // lanza el error y detiene la función
     }
 
-    // SI EXISTE agregala y guarda
-    this.items.push(prenda);
-    this.guardar();
+    // Busca en el CARRITO si este producto ya fue agregado (undefined si es nuevo)
+    const enCarrito = this.items.find((producto) => producto.id === id);
+
+    if (enCarrito) {
+      // ya está: le suma 1 a su cantidad (cambia el obejto que esta dentro de items)
+      enCarrito.cantidad += 1;
+    } else {
+      // es nuevo: mete una COPIA de la prenda con cantidad 1
+      // (copia con spread para no modificar el catálogo original)
+      this.items.push({ ...prenda, cantidad: 1 });
+    }
+    this.guardar(); // en los dos casos, guarda el carrito en localStorage.
   }
 
+  // calcularTotal con (reduce)
   calcularTotal() {
-    return this.items.reduce((total, producto) => total + producto.precio, 0);
+    return this.items.reduce((total, producto) => total + producto.precio * producto.cantidad, 0);
   }
 
   quitarProducto(id) {
@@ -49,7 +65,13 @@ export class Carrito {
       // -1 = no está en el carrito. Se compara con === -1 y no con !posicion (0 es falsy).
       return; // no hay nada que quitar: sale sin hacer nada.
     }
-    this.items.splice(posicion, 1); // Quita 1 elemento desde la posicion
+    const articulo = this.items[posicion];
+    if (articulo.cantidad > 1) {
+      articulo.cantidad -= 1;
+    } else {
+      this.items.splice(posicion, 1); // Quita 1 elemento desde la posicion
+    }
+
     this.guardar(); // Guarda los cambios en localStorage.
   }
 

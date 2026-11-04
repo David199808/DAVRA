@@ -20,7 +20,7 @@ const tarjetas = document.querySelectorAll(".producto");
 // actualizarContador: escribe en el menu cuantos productos tiene el carrito
 function actualizarContador() {
   // Es una función para no repetir la linea (DRY): se usa al cargar y en cada click
-  contador.textContent = carritoNuevo.items.length; // Cantidad de prodcutos -> texto del contador.
+  contador.textContent = carritoNuevo.contarUnidades(); // Cantidad de prodcutos -> texto del contador.
 }
 
 actualizarContador(); // al cargar: muestra lo que quedo guardado en el localStorage.

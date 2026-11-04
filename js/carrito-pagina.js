@@ -33,7 +33,7 @@ function mostrarCarrito() {
   } else {
     // Si no...
     mensajeVacio.hidden = true; // ...esconde el mensaje porque hay productos.
-    carritoNuevo.items.forEach(({ id, nombre, talla, precio }) => {
+    carritoNuevo.items.forEach(({ id, nombre, talla, precio, cantidad }) => {
       //recorre el carrito desestructurando los 3 datos de cada producto.
       const li = document.createElement("li"); // crea un li por CADA producto del carrito.
       const boton = document.createElement("button"); // Crea un boton por cada producto del carrito.
@@ -43,7 +43,8 @@ function mostrarCarrito() {
         carritoNuevo.quitarProducto(id); // Quita el producto coon ese id (el boton recuerda su id gracias al closure)
         mostrarCarrito(); // Redibuja la pagina con los productos que quedan.
       });
-      li.textContent = `${nombre} - Talla: ${talla} - ${formatoPesos.format(precio)}`; // y le escribe los datos del producto.
+      const subtotal = precio * cantidad;
+      li.textContent = `${nombre} - Talla: ${talla} - ${formatoPesos.format(precio)} x ${cantidad} = ${formatoPesos.format(subtotal)}`; // y le escribe los datos del producto.
       li.append(boton); // mete el boton dentro del li asi cada boton aparece en cada li
       lista.append(li); // Mete el "li" en la lista (aquí aparece en la página)
     });
@@ -51,7 +52,7 @@ function mostrarCarrito() {
   // El total lo calcula la clase (calcularTotal) y se escribe en el parrafo.
   total.textContent = `Total: ${formatoPesos.format(carritoNuevo.calcularTotal())}`;
 
-  const cantidadTotal = carritoNuevo.items.length;
+  const cantidadTotal = carritoNuevo.contarUnidades();
   if (cantidadTotal === 1) {
     totalProductos.textContent = `Tienes ${cantidadTotal} producto`;
   } else {
