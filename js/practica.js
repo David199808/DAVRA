@@ -88,3 +88,12 @@ const ordenados = ordenarPorPrecio();
 const lineas = ordenados.map((producto) => `${producto.nombre} - $${producto.precio}`);
 console.log(lineas);
 console.log(productos[0].precio);
+
+function agregarProducto(id) {
+  const items = productos.find((producto) => producto.id === id);
+  if (!items) {
+    throw new Error(`El producto con el id ${id} no existe`);
+  }
+  this.items.push(items);
+  this.guardar();
+}
