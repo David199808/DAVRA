@@ -1,4 +1,5 @@
 import { Carrito } from "./carrito.js";
+import { productos } from "./productos.js";
 
 //----- VATIABLES -----//
 
@@ -18,9 +19,13 @@ const mensajeVacio = document.querySelector(".carrito__vacio");
 
 const totalProductos = document.querySelector(".carrito__cantidad");
 
+const pedido = document.querySelector(".carrito__pedido");
+
 //----- VATIABLES END -----//
 
 //----- FUNCIONES ----//
+
+//----- función: dibujar lista de elementos del carrito, total, total productos y boton quitar -----//
 
 // mostrarCarrito: dibuja en la pagina los productos del carrito y el total.
 // Esta es una funcion porque se usa 2 veces: al cargar la pagina y despues de cada "Quitar".
@@ -61,5 +66,21 @@ function mostrarCarrito() {
 }
 
 mostrarCarrito(); // Al cargar la página: dibuja el carrito por primera vez.
+
+//----- función pedido por whatsapp -----//
+
+pedido.addEventListener("click", () => {
+  if (carritoNuevo.contarUnidades() === 0) {
+    return;
+  }
+  const lineas = carritoNuevo.items.map(({ nombre, talla, precio, cantidad }) => {
+    const subtotal = precio * cantidad;
+    return `-${nombre} - (${talla}) x ${cantidad} = ${formatoPesos.format(precio)}`;
+  });
+  const mensaje = `¡Hola DAVRA! Quiero hacer este pedido:\n${lineas.join("\n")}\nTotal: ${formatoPesos.format(carritoNuevo.calcularTotal())}`;
+
+  const link = `https://wa.me/573001234567?text=${encodeURIComponent(mensaje)}`;
+  window.open(link, "_blank");
+});
 
 //----- FUNCIONES END ----//
