@@ -38,18 +38,26 @@ function mostrarCarrito() {
   } else {
     // Si no...
     mensajeVacio.hidden = true; // ...esconde el mensaje porque hay productos.
-    carritoNuevo.items.forEach(({ id, nombre, talla, precio, cantidad }) => {
-      //recorre el carrito desestructurando los 3 datos de cada producto.
+    carritoNuevo.items.forEach(({ id, nombre, talla, precio, cantidad, imagen }) => {
+      //recorre el carrito desestructurando los datos de cada producto.
       const li = document.createElement("li"); // crea un li por CADA producto del carrito.
+      li.classList.add("carrito__item");
       const boton = document.createElement("button"); // Crea un boton por cada producto del carrito.
-      boton.textContent = "Quitar"; // escribe "quitar" en ese boton
+      boton.classList.add("carrito__quitar");
+      boton.setAttribute("aria-label", `Quitar ${nombre}`);
+      boton.textContent = "🗑️"; // escribe "quitar" en ese boton
       boton.addEventListener("click", () => {
         // Cuando haga click en el boton:
         carritoNuevo.quitarProducto(id); // Quita el producto coon ese id (el boton recuerda su id gracias al closure)
         mostrarCarrito(); // Redibuja la pagina con los productos que quedan.
       });
       const subtotal = precio * cantidad;
+      const img = document.createElement("img");
+      img.classList.add("carrito__imagen");
+      img.src = imagen;
+      img.alt = ""; // decorativa: el nombre del producto ya esta escrito en el li.
       li.textContent = `${nombre} - Talla: ${talla} - ${formatoPesos.format(precio)} x ${cantidad} = ${formatoPesos.format(subtotal)}`; // y le escribe los datos del producto.
+      li.prepend(img);
       li.append(boton); // mete el boton dentro del li asi cada boton aparece en cada li
       lista.append(li); // Mete el "li" en la lista (aquí aparece en la página)
     });
