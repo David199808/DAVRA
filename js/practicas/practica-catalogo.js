@@ -1,4 +1,4 @@
-import { productos } from "./productos.js";
+import { productos } from "./catalogo.js";
 
 //function cargarCatalogo() {
 //return new Promise((resolve, reject) => {
@@ -48,3 +48,18 @@ async function mostrarCatalogo() {
 mostrarCatalogo();
 
 console.log("Mientras tanto, sigo trabajando");
+
+const catalogo = [
+  { id: 1, nombre: "Buzo", precio: 95000 },
+  { id: 2, nombre: "Jogger", precio: 80000 },
+];
+const guardados = [{ id: 2, cantidad: 3 }, { id: 7 }];
+
+const existentes = guardados.filter((item) => catalogo.find((producto) => producto.id === item.id));
+
+const productosCompletos = existentes.map((item) => {
+  const actual = catalogo.find((producto) => producto.id === item.id);
+  return { ...actual, cantidad: item.cantidad ?? 1 };
+});
+
+console.log(productosCompletos);

@@ -1,4 +1,4 @@
-import { productos } from "./productos.js";
+import { productos } from "./catalogo.js";
 
 // Carrito: clase (molde) para crear carritos.
 // Datos: items.
