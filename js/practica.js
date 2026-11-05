@@ -97,3 +97,16 @@ function agregarProducto(id) {
   this.items.push(items);
   this.guardar();
 }
+
+function agregarProductoB(id) {
+  const prenda = productos.find((producto) => producto.id === id);
+  if (!prenda) {
+    throw new Error(`El producto con id ${id} no esxiste`);
+  }
+  const enCarrito = this.items.find((producto) => producto.id === id);
+  if ((enCarrito.cantidad += 1)) {
+  } else {
+    this.items.push({ ...prenda, cantidad: 1 });
+  }
+  this.guardar();
+}
