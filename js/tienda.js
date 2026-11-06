@@ -1,65 +1,74 @@
-//----- DOM ----- //
+//======================================================
+// tienda.js - Páginas de hombre y mujer
+// Dibuja el catálogo desde los datos, conecta los botones...
+// ... del carrito y filtra las tarjetas con el buscador.
+//======================================================
 
-/*-----IMPORT-----*/
+/* ----- IMPORTS -----*/
+// Lo que traigo de otros archivos.
 import { Carrito } from "./carrito.js";
 import { productos } from "./catalogo.js";
-/*-----IMPORT END-----*/
+/* ----- IMPORTS END ----- */
 
-/*-----VARIABLES-----*/
+/* ----- VARIABLES -----*/
+// Un solo carrito para toda la página (lo comparten todos los botones)
 const carritoNuevo = new Carrito(); // Un solo carrito aqui arriba
 
+// Elementos del HTML que vamos a usar.
 const contador = document.querySelector(".menu__contador"); // selecciona el contador (<span> del html)
-
 const buscador = document.querySelector(".buscador");
-
 const vitrina = document.querySelector(".catalogo");
 
+// Convierte 150000 en "$150.000"
 const formatoPesos = new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 });
 
-/*-----VARIABLES END-----*/
+/* ----- VARIABLES END -----*/
 
-/*-----FUNCIONES-----*/
+/* ----- FUNCIONES ----- */
 
-// actualizarContador: escribe en el menu cuantos productos tiene el carrito
+// Escribe en el menú cuántas unidades hay en el carrito.
+// Es una función para no repetir esta línea (DRY): se usa al cargar y en cada clic.
 function actualizarContador() {
-  // Es una función para no repetir la linea (DRY): se usa al cargar y en cada click
   contador.textContent = carritoNuevo.contarUnidades(); // Cantidad de prodcutos -> texto del contador.
 }
 
-actualizarContador(); // al cargar: muestra lo que quedo guardado en el localStorage.
-
-//----- Catalogo: FABRICA HTML -----//
+//----- Catalogo: FÁBRICA HTML -----//
+// Molde: fabrica la tarjeta de UN producto y la entrega (no la dibuja).
+// Orden: crear -> vestir -> llenar -> conectar -> armar y entregar.
 function crearTarjeta(producto) {
   const tarjeta = document.createElement("article");
   tarjeta.classList.add("producto");
+
   const foto = document.createElement("img");
   foto.classList.add("producto__imagen");
   foto.src = producto.imagen;
   foto.alt = producto.nombre;
+
   const nombre = document.createElement("h2");
   nombre.classList.add("producto__titulo");
   nombre.textContent = producto.nombre;
+
   const precio = document.createElement("p");
   precio.classList.add("producto__precio");
   precio.textContent = formatoPesos.format(producto.precio);
+
   const talla = document.createElement("p");
   talla.classList.add("producto__talla");
   talla.textContent = "Talla " + producto.talla;
-  // ------ Crear el boton ----- //
 
   const boton = document.createElement("button");
-
-  // ----- Vestir y llenar ----- //
   boton.classList.add("producto__boton");
   boton.dataset.id = producto.id;
   boton.textContent = "Agregar al carrito";
 
-  // ------ Conectar ------ //
+  // El botón nace ya conectado: así funciona sin importar cuándo se dibuje la tarjeta.
   boton.addEventListener("click", () => {
     // Cuando le hagan click.
     carritoNuevo.agregarProducto(producto.id); // .... agrega a tu carrito, no el molde
     actualizarContador(); // Mantiene el contador 1+1+1
-    boton.textContent = "✓ Agregado"; // Cambia el texto del boton a "✓ Agregado"
+
+    // Confirmacion visual: el cliente ve "✓ Agregado" durante 1 segundo.
+    boton.textContent = "✓ Agregado";
     boton.classList.add("producto__boton--agregado"); // Agregar la clase que pinta el boton de "agregado".
     // setTimeout: espera 1000 ms (1 segundo) y despues ejecuta el callback
     setTimeout(() => {
@@ -72,10 +81,10 @@ function crearTarjeta(producto) {
   return tarjeta;
 }
 
-//----- Catalogo: FABRICA HTML -----//
+//----- Catalogo: FABRICA HTML end -----//
 
-// ----- Dibujar el catalogo ----- //
-
+// Simula que los productos tardan 1 segundo en llegar.
+// Mas adelante vendran del localStorage (módulo admin) o de un servidor.
 function cargarProductos() {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -84,45 +93,47 @@ function cargarProductos() {
   });
 }
 
+// Muestra "Cargando...", espera los productos y dibuja solo los de está página.
+
+// la categoría la decide el HTML: <section class="catalogo" data-categoria="hombre">.
 async function dibujarCatalogo() {
   vitrina.textContent = "Cargando productos...";
   try {
     const productosCargados = await cargarProductos();
     const categoria = vitrina.dataset.categoria;
     const productosCategoria = productosCargados.filter((producto) => producto.categoria === categoria);
-    vitrina.innerHTML = "";
+    vitrina.innerHTML = ""; // quita el "Cargando..." antes de dibujar.
     productosCategoria.forEach((producto) => {
       const nuevaTarjeta = crearTarjeta(producto);
       vitrina.append(nuevaTarjeta);
     });
   } catch (error) {
-    console.error(`Error: ${error.message}`);
-    vitrina.textContent = "No pudimos cargar los productos, Intenta recargar la página";
+    console.error(error); // para el programador: el error real y su linea.
+    vitrina.textContent = "No pudimos cargar los productos, Intenta recargar la página"; // para el cliente.
   }
 }
 
-dibujarCatalogo();
+/* ----- FUNCIONES END ----- */
 
-// ----- Dibujar el catalogo end ----- //
+/* ----- EVENTOS ----- */
 
-/*-----FUNCIONES END-----*/
-
-/*-----EVENTO BUSCADOR-----*/
-
-// Cuando el cliente escriba o borre en el buscador.
+// Buscador: esconde las tarjetas cuyo nombre no contiene lo que se escribió.
 buscador.addEventListener("input", () => {
+  // Se busca las tarjetas AQUÍ (en cada búsqueda) porque se dibujan despues de cargar la página.
   const tarjetas = document.querySelectorAll(".producto");
-  const texto = buscador.value.toLowerCase(); // Lee lo que esta escrito siempre en minuscula
+  const texto = buscador.value.toLowerCase(); // en minúscula para comparar sin importar mayúsculas
+
   tarjetas.forEach((tarjeta) => {
-    // Para cada tarjeta de las tarjetas...
-    const titulo = tarjeta.querySelector(".producto__titulo").textContent.toLowerCase(); //...busca el nombre del titulo y convierte todo a minuscula para que se pueda comparar
-    if (titulo.includes(texto)) {
-      // SI el titulo CONTIENE lo escrito en el buscador
-      tarjeta.hidden = false; // No esta escondida: la tarjeta se ve.
-    } else {
-      tarjeta.hidden = true; // SI NO, esconde esta tarjeta.
-    }
+    //...busca el nombre del titulo y convierte todo a minuscula para que se pueda comparar
+    const titulo = tarjeta.querySelector(".producto__titulo").textContent.toLowerCase();
+    tarjeta.hidden = !titulo.includes(texto); // si NO contiene el texto -> se esconde
   });
 });
 
-/*-----EVENTO BUSCADOR END-----*/
+/*-----EVENTO END-----*/
+
+// ----- INICIO ----- //
+
+// Lo que se ejecuta al abrir la página.
+actualizarContador(); // muestra lo que quedó guardado en el carrito
+dibujarCatalogo();
