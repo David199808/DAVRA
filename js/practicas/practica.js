@@ -1,4 +1,4 @@
-import { productos } from "./catalogo.js";
+import { productos } from "../catalogo.js";
 
 //function contarPorCategoria(categoria) {
 //let total = 0;

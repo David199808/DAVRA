@@ -1,4 +1,4 @@
-import { productos } from "./catalogo.js";
+import { productos } from "../catalogo.js";
 
 //function cargarCatalogo() {
 //return new Promise((resolve, reject) => {
@@ -63,3 +63,39 @@ const productosCompletos = existentes.map((item) => {
 });
 
 console.log(productosCompletos);
+
+const catalogo2 = [
+  { id: 1, nombre: "Buzo", precio: 95000 },
+  { id: 2, nombre: "Jogger", precio: 80000 },
+  { id: 3, nombre: "Camiseta", precio: 45000 },
+];
+
+const nombres = catalogo2.map((producto) => {
+  producto.nombre;
+  return producto.nombre;
+});
+
+console.log(nombres);
+
+const conDescuento = catalogo2.map((producto) => {
+  return { ...producto, precio: producto.precio * 0.9 };
+});
+
+console.log(conDescuento);
+
+const nombresBaratos = catalogo2.filter((producto) => producto.precio < 90000).map((producto) => producto.nombre);
+
+//const nombresBaratos = baratos.map((producto) => producto.nombre);
+
+console.log(nombresBaratos);
+
+function describirProducto(id) {
+  const encontrado = catalogo2.find((producto) => producto.id === id);
+  if (!encontrado) {
+    return "No existe";
+  }
+  return `${encontrado.nombre} cuesta ${encontrado.precio}`;
+}
+
+console.log(describirProducto(2));
+console.log(describirProducto(9));

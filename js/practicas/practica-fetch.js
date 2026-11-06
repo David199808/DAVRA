@@ -25,3 +25,27 @@ async function mostrarUsuarios() {
 }
 
 mostrarUsuarios();
+
+// Misión: mostrar los títulos de las tareas completadas del usuario 1, y cuántas son.
+// ------ EJERCICIO 2 ------ //
+
+async function mostarTitulos() {
+  try {
+    const respuesta2 = await fetch("https://jsonplaceholder.typicode.com/todos");
+    if (!respuesta2.ok) {
+      throw new Error(`No se pudo cargar (${respuesta2.status})`);
+    }
+    const datos2 = await respuesta2.json();
+
+    const tareasCompletadasUsuario1 = datos2.filter((tarea) => tarea.userId === 1 && tarea.completed);
+    const titulos = tareasCompletadasUsuario1.map((tarea) => tarea.title);
+    console.log(`Total: ${titulos.length} titulos`);
+    titulos.forEach((titulo) => {
+      console.log(`Nombre de titulo ${titulo}`);
+    });
+  } catch (error) {
+    console.log(`Error: ${error.message}`);
+  }
+}
+
+mostarTitulos();

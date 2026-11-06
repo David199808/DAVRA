@@ -153,7 +153,7 @@ body {
   font-size: clamp(1.6rem, 5vw, 2.5rem);
   margin: 30px 20px;
 }
-.productos {
+.catalogo {
   max-width: 1250px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 300px));
