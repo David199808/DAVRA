@@ -30,6 +30,8 @@ function crearFila(producto) {
   celdaPrecio.textContent = formatoPesos.format(producto.precio);
 
   const celdaAcciones = document.createElement("td");
+  const cajitaBotones = document.createElement("div");
+  cajitaBotones.classList.add("admin__acciones");
 
   const botonEditar = document.createElement("button");
   botonEditar.textContent = "Editar";
@@ -41,7 +43,8 @@ function crearFila(producto) {
   botonBorrar.classList.add("admin__borrar");
   botonBorrar.dataset.id = producto.id;
 
-  celdaAcciones.append(botonEditar, botonBorrar);
+  cajitaBotones.append(botonEditar, botonBorrar);
+  celdaAcciones.append(cajitaBotones);
 
   fila.append(celdaId, celdaFoto, celdaNombre, celdaCategoria, celdaTalla, celdaPrecio, celdaAcciones);
 

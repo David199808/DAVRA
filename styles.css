@@ -287,3 +287,60 @@ footer {
   font-size: 1rem;
   margin-top: 20px;
 }
+/*----- CARRITO END -----*/
+
+/*----- ADMINISTRADOR -----*/
+
+.main-admin {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0px 20px;
+}
+
+.admin {
+  overflow-x: cover;
+  overflow-x: auto;
+}
+
+.admin__tabla {
+  width: 100%;
+  border-collapse: collapse;
+  border-bottom: 1px solid #000;
+}
+
+th,
+td {
+  padding: 20px;
+  text-align: left;
+  border-bottom: 1px solid #000;
+}
+
+.admin__foto {
+  width: 48px;
+  object-fit: cover;
+}
+
+@media (hover: hover) {
+  .admin__fila:hover {
+    background-color: #f1f1f1;
+  }
+}
+
+.admin__acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.admin__editar {
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+}
+
+.admin__borrar {
+  background-color: rgb(83, 5, 5);
+  color: #fff;
+  padding: 10px;
+}
+
+/*----- ADMINISTRADOR END -----*/
