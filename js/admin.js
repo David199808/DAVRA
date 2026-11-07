@@ -1,4 +1,4 @@
-import { guardarProductos, obtenerProductos } from "./catalogo.js";
+import { guardarProductos, obtenerProductos, siguienteId } from "./catalogo.js";
 
 // Convierte 150000 en "$150.000"
 const formatoPesos = new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 });
@@ -90,8 +90,7 @@ formulario.addEventListener("submit", (evento) => {
   const talla = campoTalla.value;
   const categoria = campoCategoria.value;
   const imagen = campoImagen.value;
-  const ids = productos.map((producto) => producto.id);
-  const nuevoId = Math.max(...ids) + 1;
+  const nuevoId = siguienteId();
   const productoNuevo = { id: nuevoId, nombre, precio, talla, categoria, imagen };
   productos.push(productoNuevo);
   guardarProductos(productos);

@@ -124,3 +124,17 @@ export function obtenerProductos() {
     return productos;
   }
 }
+
+export function siguienteId() {
+  const guardado = localStorage.getItem("ultimoId");
+  let ultimo;
+  if (guardado) {
+    ultimo = Number(guardado);
+  } else {
+    const ids = obtenerProductos().map((item) => item.id);
+    ultimo = Math.max(...ids);
+  }
+  const nuevo = ultimo + 1;
+  localStorage.setItem("ultimoId", nuevo);
+  return nuevo;
+}
