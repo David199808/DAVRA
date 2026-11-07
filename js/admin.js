@@ -45,6 +45,16 @@ function crearFila(producto) {
   botonBorrar.classList.add("admin__borrar");
   botonBorrar.dataset.id = producto.id;
 
+  botonBorrar.addEventListener("click", () => {
+    if (!confirm(`¿Seguro que quieres borrar "${producto.nombre}"?`)) {
+      return;
+    }
+    const productos = obtenerProductos();
+    const productosActualizados = productos.filter((item) => item.id !== producto.id);
+    guardarProductos(productosActualizados);
+    dibujarTabla();
+  });
+
   cajitaBotones.append(botonEditar, botonBorrar);
   celdaAcciones.append(cajitaBotones);
 
