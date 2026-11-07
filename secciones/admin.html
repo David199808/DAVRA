@@ -27,6 +27,29 @@
 
     <main class="main-admin">
       <h1>Panel de administrador</h1>
+      <div class="formulario">
+        <form class="admin__formulario">
+          <label class="admin__nombre" for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" required />
+          <label class="admin__precio" for="precio">Precio</label>
+          <input id="precio" name="precio" type="number" required min="1" />
+          <label for="talla">Talla</label>
+          <select id="talla" name="talla" required>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+          </select>
+          <label for="categoria">Categoría</label>
+          <select id="categoria" name="categoria" required>
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+          </select>
+          <label class="admin__imagen" for="imagen">Imagen</label>
+          <input id="imagen" name="imagen" type="text" required />
+          <button class="admin__agregar" type="submit">Agregar producto</button>
+        </form>
+      </div>
       <div class="admin">
         <table class="admin__tabla">
           <thead>

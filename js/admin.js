@@ -1,7 +1,9 @@
-import { obtenerProductos } from "./catalogo.js";
+import { guardarProductos, obtenerProductos } from "./catalogo.js";
 
 // Convierte 150000 en "$150.000"
 const formatoPesos = new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 });
+
+const formulario = document.querySelector(".admin__formulario");
 
 function crearFila(producto) {
   const fila = document.createElement("tr");
@@ -63,3 +65,26 @@ function dibujarTabla() {
 }
 
 dibujarTabla();
+
+const campoNombre = document.querySelector("#nombre");
+const campoPrecio = document.querySelector("#precio");
+const campoTalla = document.querySelector("#talla");
+const campoCategoria = document.querySelector("#categoria");
+const campoImagen = document.querySelector("#imagen");
+
+formulario.addEventListener("submit", (evento) => {
+  evento.preventDefault();
+  const productos = obtenerProductos();
+  const nombre = campoNombre.value;
+  const precio = Number(campoPrecio.value);
+  const talla = campoTalla.value;
+  const categoria = campoCategoria.value;
+  const imagen = campoImagen.value;
+  const ids = productos.map((producto) => producto.id);
+  const nuevoId = Math.max(...ids) + 1;
+  const productoNuevo = { id: nuevoId, nombre, precio, talla, categoria, imagen };
+  productos.push(productoNuevo);
+  guardarProductos(productos);
+  dibujarTabla();
+  formulario.reset();
+});
