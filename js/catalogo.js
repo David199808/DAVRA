@@ -1,6 +1,6 @@
 // Catálogo: array de objetos. Cada objeto es un producto con sus datos.
 
-export const productos = [
+const productos = [
   // ------ PRODUCTOS HOMBRE ------ //
   {
     id: 1,
@@ -108,3 +108,19 @@ export const productos = [
     imagen: "../imagenes/mujer/corset-de-malla.jpeg",
   },
 ];
+
+// ----- FUNCIONES ----- //
+
+export function guardarProductos(lista) {
+  localStorage.setItem("catalogo", JSON.stringify(lista));
+}
+
+export function obtenerProductos() {
+  const guardado = localStorage.getItem("catalogo");
+  if (guardado) {
+    return JSON.parse(guardado);
+  } else {
+    guardarProductos(productos);
+    return productos;
+  }
+}

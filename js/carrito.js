@@ -1,4 +1,4 @@
-import { productos } from "./catalogo.js";
+import { obtenerProductos } from "./catalogo.js";
 
 // Carrito: clase (molde) para crear carritos.
 // Datos: items.
@@ -15,12 +15,13 @@ export class Carrito {
     if (guardado) {
       // si había algo guardado...
       const guardados = JSON.parse(guardado); // Convierte el texto guardado en un array de objetos(los recibos viejos).
+      const catalogo = obtenerProductos(); // pide el catalogo una sola vez para no leerlo en cada vuelta.
       // Deja solo los items que todavia existen en el catalogo y quita los que ya no existen.
-      const existentes = guardados.filter((item) => productos.find((producto) => producto.id === item.id));
+      const existentes = guardados.filter((item) => catalogo.find((producto) => producto.id === item.id));
       // para los items que quedaron en existentes TRANSFORMA cada item que quedó en un producto actualizado.
       this.items = existentes.map((item) => {
         // Busca en el catalogo el producto actual con el mismo id.
-        const actual = productos.find((producto) => producto.id === item.id);
+        const actual = catalogo.find((producto) => producto.id === item.id);
         // retorna esos ultimos items con todo lo que ya trae en el catalogo datos actuales y solo la cantidad del recibo o 1
         return { ...actual, cantidad: item.cantidad ?? 1 };
       });
@@ -47,7 +48,7 @@ export class Carrito {
   //----- AGREGAR PRODUCTOS -----//
   agregarProducto(id) {
     // find: busca en el catalogo el producto con ese id (si no existe, prenda queda undefined)
-    const prenda = productos.find((producto) => producto.id === id);
+    const prenda = obtenerProductos().find((producto) => producto.id === id);
     if (!prenda) {
       // SI NO existe / no hay nada
       throw new Error(`El producto con id ${id} no existe`); // lanza el error y detiene la función

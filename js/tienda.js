@@ -7,7 +7,7 @@
 /* ----- IMPORTS -----*/
 // Lo que traigo de otros archivos.
 import { Carrito } from "./carrito.js";
-import { productos } from "./catalogo.js";
+import { obtenerProductos } from "./catalogo.js";
 /* ----- IMPORTS END ----- */
 
 /* ----- VARIABLES -----*/
@@ -88,7 +88,7 @@ function crearTarjeta(producto) {
 function cargarProductos() {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(productos);
+      resolve(obtenerProductos());
     }, 1000);
   });
 }
