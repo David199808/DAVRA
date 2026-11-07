@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="icon" type="image/png" href="../imagenes/icono-64px.png" />
+    <title>Admin</title>
+  </head>
+  <body>
+    <!-- LOGO HEADER -->
+    <header class="header">
+      <img
+        class="header__imagen"
+        src="../imagenes/DAvRA-logo-paquete/01_principal/daura-simbolo-blanco-transparente.png"
+        alt="logo Davra"
+      />
+    </header>
+
+    <!--BARRA DE NAV-->
+    <nav class="menu">
+      <a class="menu__link" href="../index.html">INICIO</a>
+      <a class="menu__link" href="hombre.html">HOMBRE</a>
+      <a class="menu__link" href="mujer.html">MUJER</a>
+      <a class="menu__link" href="carrito.html">🛒CARRITO (<span class="menu__contador">0</span>)</a>
+    </nav>
+
+    <main>
+      <h1>Panel de administrador</h1>
+      <table class="admin__tabla">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Foto</th>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Talla</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="admin__lista"></tbody>
+      </table>
+    </main>
+    <script type="module" src="../js/admin.js"></script>
+  </body>
+</html>
