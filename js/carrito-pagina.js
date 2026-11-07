@@ -82,7 +82,7 @@ pedido.addEventListener("click", () => {
   }
   const lineas = carritoNuevo.items.map(({ nombre, talla, precio, cantidad }) => {
     const subtotal = precio * cantidad;
-    return `-${nombre} - (${talla}) x ${cantidad} = ${formatoPesos.format(precio)}`;
+    return `- ${nombre} - (${talla}) x ${cantidad} = ${formatoPesos.format(subtotal)}`;
   });
   const mensaje = `¡Hola DAVRA! Quiero hacer este pedido:\n${lineas.join("\n")}\nTotal: ${formatoPesos.format(carritoNuevo.calcularTotal())}`;
 
