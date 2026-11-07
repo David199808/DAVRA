@@ -5,6 +5,15 @@ const formatoPesos = new Intl.NumberFormat("es-CO", { style: "currency", currenc
 
 const formulario = document.querySelector(".admin__formulario");
 
+let idEditando = null;
+const botonFormulario = document.querySelector(".admin__agregar");
+
+const campoNombre = document.querySelector("#nombre");
+const campoPrecio = document.querySelector("#precio");
+const campoTalla = document.querySelector("#talla");
+const campoCategoria = document.querySelector("#categoria");
+const campoImagen = document.querySelector("#imagen");
+
 function crearFila(producto) {
   const fila = document.createElement("tr");
   fila.classList.add("admin__fila");
@@ -39,6 +48,16 @@ function crearFila(producto) {
   botonEditar.textContent = "Editar";
   botonEditar.classList.add("admin__editar");
   botonEditar.dataset.id = producto.id;
+
+  botonEditar.addEventListener("click", () => {
+    campoNombre.value = producto.nombre;
+    campoImagen.value = producto.imagen;
+    campoPrecio.value = producto.precio;
+    campoTalla.value = producto.talla;
+    campoCategoria.value = producto.categoria;
+    idEditando = producto.id;
+    botonFormulario.textContent = "Guardar";
+  });
 
   const botonBorrar = document.createElement("button");
   botonBorrar.textContent = "Borrar";
@@ -76,12 +95,6 @@ function dibujarTabla() {
 
 dibujarTabla();
 
-const campoNombre = document.querySelector("#nombre");
-const campoPrecio = document.querySelector("#precio");
-const campoTalla = document.querySelector("#talla");
-const campoCategoria = document.querySelector("#categoria");
-const campoImagen = document.querySelector("#imagen");
-
 formulario.addEventListener("submit", (evento) => {
   evento.preventDefault();
   const productos = obtenerProductos();
@@ -90,10 +103,17 @@ formulario.addEventListener("submit", (evento) => {
   const talla = campoTalla.value;
   const categoria = campoCategoria.value;
   const imagen = campoImagen.value;
-  const nuevoId = siguienteId();
-  const productoNuevo = { id: nuevoId, nombre, precio, talla, categoria, imagen };
-  productos.push(productoNuevo);
+  if (idEditando === null) {
+    const nuevoId = siguienteId();
+    const productoNuevo = { id: nuevoId, nombre, precio, talla, categoria, imagen };
+    productos.push(productoNuevo);
+  } else {
+    const posicion = productos.findIndex((item) => item.id === idEditando);
+    productos[posicion] = { id: idEditando, nombre, precio, talla, categoria, imagen };
+  }
   guardarProductos(productos);
   dibujarTabla();
   formulario.reset();
+  idEditando = null;
+  botonFormulario.textContent = "Agregar producto";
 });
