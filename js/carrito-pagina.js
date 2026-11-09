@@ -1,3 +1,11 @@
+// ==============================================
+// carrito-pagina.js - Página del carrito
+// Qué hace: dibuja los productos del carrito con su foto,
+//  subtotal y botón de quitar; muestra el total y armana el
+//  pedido por whatsApp
+// Usa: la clase Carrito (los datos)
+// ==============================================
+
 import { Carrito } from "./carrito.js";
 
 //----- VATIABLES -----//
@@ -76,16 +84,20 @@ mostrarCarrito(); // Al cargar la página: dibuja el carrito por primera vez.
 
 //----- función pedido por whatsapp -----//
 
+// Al hacer clic en "Finalizar pedido": arma un mensaje con el pedido y abre Whatsapp.
 pedido.addEventListener("click", () => {
   if (carritoNuevo.contarUnidades() === 0) {
-    return;
+    return; // carrito vacío: no hay nada que pedir.
   }
+  // Una línea de texto por producto: "- Buzo - (M) x 2 = $ 190.000"
   const lineas = carritoNuevo.items.map(({ nombre, talla, precio, cantidad }) => {
     const subtotal = precio * cantidad;
     return `- ${nombre} - (${talla}) x ${cantidad} = ${formatoPesos.format(subtotal)}`;
   });
   const mensaje = `¡Hola DAVRA! Quiero hacer este pedido:\n${lineas.join("\n")}\nTotal: ${formatoPesos.format(carritoNuevo.calcularTotal())}`;
 
+  // encodeURIComponent: convierte espacios, tildes y saltos de línea en texto seguro para un link.
+  // El número es de prueba: nunca un numero personal en un Repo público
   const link = `https://wa.me/573001234567?text=${encodeURIComponent(mensaje)}`;
   window.open(link, "_blank");
 });

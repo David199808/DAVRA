@@ -1,5 +1,5 @@
-import { productos } from "../catalogo.js";
-
+import { obtenerProductos } from "../catalogo.js";
+/*
 //function contarPorCategoria(categoria) {
 //let total = 0;
 //productos.forEach((producto) => {
@@ -110,3 +110,47 @@ function agregarProductoB(id) {
   }
   this.guardar();
 }
+
+const productos = [
+  { id: 1, nombre: "Buzo", precio: 95000 },
+  { id: 2, nombre: "Jogger", precio: 80000 },
+  { id: 3, nombre: "Camiseta", precio: 45000 },
+];
+const productoABorrar = { id: 2, nombre: "Jogger", precio: 80000 };
+
+const productosActualizados = productos.filter((item) => item.id !== productoABorrar.id);
+console.log(productosActualizados);
+
+const productosTotal = productos.reduce((total, producto) => total + producto.precio, 0);
+console.log(productosTotal);
+
+const Camiseta = productos.find((item) => item.id === 3);
+console.log(Camiseta.nombre);
+
+const etiquetas = productos.map((item) => `${item.nombre} - ${item.precio}`);
+
+console.log(etiquetas);
+*/
+
+//4. filter + map encadenados → Crea caros: los nombres de los productos que cuestan más de 50.000.
+
+const productos2 = [
+  { id: 1, nombre: "Buzo", precio: 95000 },
+  { id: 2, nombre: "Jogger", precio: 80000 },
+  { id: 3, nombre: "Camiseta", precio: 45000 },
+];
+
+const caros = productos2.filter((item) => item.precio > 50000).map((item) => item.nombre);
+
+console.log(caros);
+
+function buscarNombre(id) {
+  const encontrado = productos2.find((item) => item.id === id);
+  if (!encontrado) {
+    return "No existe";
+  }
+  return encontrado.nombre;
+}
+
+console.log(buscarNombre(1));
+console.log(buscarNombre(9));

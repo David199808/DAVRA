@@ -1,3 +1,10 @@
+// =============================================
+// carrito.js - La clase Carrito
+// Qué hace: maneja los DATOS del carrito (agregar, quitar,
+//  contar,total) y los guarda en el localStorage.
+// No dibuja nada: dibujar es trabajo de las páginas.
+// Lo usan: tienda.js (hombre y mujer) y carrito-pagina.js.
+// =============================================
 import { obtenerProductos } from "./catalogo.js";
 
 // Carrito: clase (molde) para crear carritos.
