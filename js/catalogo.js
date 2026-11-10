@@ -2,8 +2,8 @@
 // catalogo.js - El catálogo y su encargado
 // Qué hace: guarda el inventario inicial de la tienda y las
 //   funciones para leerlo y guardarlo en el localStorage.
-// Regla: nadie usa el array directo; todos pasan po el
-//   encargado (obtenerProductos() / guardarProductos()).
+// Regla: nadie usa el array directo; todos pasan por
+//    el encargado (obtenerProductos() / guardarProductos()).
 // Lo usan: tienda.js, carrito.js y admin.js
 // ===================================================
 
