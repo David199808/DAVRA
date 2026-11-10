@@ -170,6 +170,16 @@ body {
   display: block;
 }
 
+.producto__talla {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #000;
+  background: #fff;
+  border-radius: 999px;
+}
+
 .producto__boton {
   width: 100%;
   background-color: #000;
@@ -254,6 +264,10 @@ footer {
   padding: 10px;
 }
 
+.carrito__vacio {
+  text-align: center;
+}
+
 .carrito__cantidad {
   display: flex;
   font-weight: bold;
@@ -334,6 +348,61 @@ td {
 .admin__acciones {
   display: flex;
   gap: 8px;
+}
+
+/*-----formulario-----*/
+
+.admin__formulario {
+  display: grid;
+  gap: 12px;
+  max-width: 420px;
+  margin: 24px auto;
+  padding: 24px;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+}
+
+.admin__formulario label {
+  font-weight: bold;
+}
+
+.admin__formulario input,
+.admin__formulario select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.admin__agregar {
+  padding: 12px;
+  border: none;
+  border-radius: 999px;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+.admin__tallas {
+  display: flex;
+  gap: 8px;
+}
+
+.admin__tallas label {
+  padding: 6px 14px;
+  border: 1px solid #000;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.admin__tallas input {
+  display: none;
+}
+
+.admin__tallas label:has(input:checked) {
+  background: #000;
+  color: #fff;
 }
 
 .admin__editar {

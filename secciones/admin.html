@@ -34,10 +34,12 @@
           <label class="admin__precio" for="precio">Precio</label>
           <input id="precio" name="precio" type="number" required min="1" />
           <label for="talla">Talla</label>
-          <label><input type="checkbox" name="tallas" value="S" /> S</label>
-          <label><input type="checkbox" name="tallas" value="M" /> M</label>
-          <label><input type="checkbox" name="tallas" value="L" /> L</label>
-          <label><input type="checkbox" name="tallas" value="XL" /> XL</label>
+          <div class="admin__tallas">
+            <label><input type="checkbox" name="tallas" value="S" /> S</label>
+            <label><input type="checkbox" name="tallas" value="M" /> M</label>
+            <label><input type="checkbox" name="tallas" value="L" /> L</label>
+            <label><input type="checkbox" name="tallas" value="XL" /> XL</label>
+          </div>
           <label for="categoria">Categoría</label>
           <select id="categoria" name="categoria" required>
             <option value="hombre">Hombre</option>

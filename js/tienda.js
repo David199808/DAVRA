@@ -42,9 +42,8 @@ function crearTarjeta(producto) {
     const precio = document.createElement("p");
     precio.classList.add("producto__precio");
     precio.textContent = formatoPesos.format(producto.precio);
-    const talla = document.createElement("p");
-    talla.classList.add("producto__talla");
     const selecTalla = document.createElement("select");
+    selecTalla.classList.add("producto__talla");
     producto.tallas.forEach((t) => {
         const opcion = document.createElement("option");
         opcion.value = t;
@@ -69,7 +68,7 @@ function crearTarjeta(producto) {
             boton.classList.remove("producto__boton--agregado"); // Cuando se agote el tiempo remueve esta clase
         }, 1000); // Cuanto esperar en milisegundos
     }); // Cierra el callback del clic y del addEventListener
-    tarjeta.append(foto, nombre, precio, talla, selecTalla, boton);
+    tarjeta.append(foto, nombre, precio, selecTalla, boton);
     return tarjeta;
 }
 //----- Catalogo: FABRICA HTML end -----//
