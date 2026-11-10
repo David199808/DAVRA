@@ -10,7 +10,7 @@
 // Inventario inicial: con esto "abre la tienda" la primera vez.
 // No tiene export a propósito: asi nadie lo lee sin pasar por el encargado.
 
-interface Producto {
+export interface Producto {
   id: number;
   nombre: string;
   precio: number;

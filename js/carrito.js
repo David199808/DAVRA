@@ -6,15 +6,11 @@
 // Lo usan: tienda.js (hombre y mujer) y carrito-pagina.js.
 // =============================================
 import { obtenerProductos } from "./catalogo.js";
-
 // Carrito: clase (molde) para crear carritos.
 // Datos: items.
 // Acciones: agregar, quitar, total, mostrar, guardar, contar unidades.
-
 //----- CLASE PARA EL CARRITO -----//
-
 //----- CONSTRUCTOR -----//
-
 export class Carrito {
   constructor() {
     this.items = []; // Por defecto carrito vacío.
@@ -37,21 +33,17 @@ export class Carrito {
     }
   }
   //----- CONSTRUCTOR END -----//
-
   //---------- METODOS ----------//
-
   //----- GUARDAR EN LOCALSTORAGE -----//
   guardar() {
     localStorage.setItem("carrito", JSON.stringify(this.items));
   }
   //----- GUARDAR EN LOCALSTORAGE END-----//
-
   //----- CONTAR TOTAL DE UNIDADES ------//
   contarUnidades() {
     return this.items.reduce((unidades, producto) => unidades + producto.cantidad, 0);
   }
   //----- CONTAR TOTAL DE UNIDADES END ------//
-
   //----- AGREGAR PRODUCTOS -----//
   agregarProducto(id) {
     // find: busca en el catalogo el producto con ese id (si no existe, prenda queda undefined)
@@ -60,10 +52,8 @@ export class Carrito {
       // SI NO existe / no hay nada
       throw new Error(`El producto con id ${id} no existe`); // lanza el error y detiene la función
     }
-
     // Busca en el CARRITO si este producto ya fue agregado (undefined si es nuevo)
     const enCarrito = this.items.find((producto) => producto.id === id);
-
     if (enCarrito) {
       // ya está: le suma 1 a su cantidad (cambia el obejto que esta dentro de items)
       enCarrito.cantidad += 1;
@@ -75,13 +65,11 @@ export class Carrito {
     this.guardar(); // en los dos casos, guarda el carrito en localStorage.
   }
   //----- AGREGAR PRODUCTOS END -----//
-
   //----- CALCULAR EL TOTAL -----//
   calcularTotal() {
     return this.items.reduce((total, producto) => total + producto.precio * producto.cantidad, 0);
   }
   //----- CALCULAR EL TOTAL END -----//
-
   //----- QUITAR EL PRODUCTO -----//
   quitarProducto(id) {
     // findIndex busca en el carrito la posicion del producto con ese id (-1 si no está).
@@ -96,11 +84,9 @@ export class Carrito {
     } else {
       this.items.splice(posicion, 1); // Quita 1 elemento desde la posicion
     }
-
     this.guardar(); // Guarda los cambios en localStorage.
   }
   //----- QUITAR EL PRODUCTO END-----//
-
   //----- MOSTRAR CONTENIDO CARRITO -----//
   mostrarCarrito() {
     // forEach recorre el array de productos del carrito (this.items).
@@ -112,7 +98,6 @@ export class Carrito {
     // El total va a afuera del forEach para imprimirse UNA sola vez, al final.
     console.log(`Total: $${this.calcularTotal()}`);
   }
-  //----- MOSTRAR CONTENIDO CARRITO END-----//
 }
 //---------- METODOS ----------//
 //----- CLASE END -----//
