@@ -10,16 +10,19 @@
 // Inventario inicial: con esto "abre la tienda" la primera vez.
 // No tiene export a propósito: asi nadie lo lee sin pasar por el encargado.
 
+export type Categoria = "hombre" | "mujer";
+export type Talla = "S" | "M" | "L" | "XL";
+
 export interface Producto {
   id: number;
   nombre: string;
   precio: number;
-  talla: string;
-  categoria: string;
+  talla: Talla;
+  categoria: Categoria;
   imagen: string;
 }
 
-const productos = [
+const productos: Producto[] = [
   // ------ PRODUCTOS HOMBRE ------ //
   {
     id: 1,

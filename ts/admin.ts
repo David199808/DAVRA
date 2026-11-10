@@ -7,7 +7,7 @@
 // Usa: el encargado del catalogo.js
 // ============================================================
 
-import { guardarProductos, obtenerProductos, siguienteId, Producto } from "./catalogo.js";
+import { guardarProductos, obtenerProductos, siguienteId, Producto, Categoria, Talla } from "./catalogo.js";
 
 // ----- VARIABLES ----- //
 
@@ -137,8 +137,8 @@ formulario.addEventListener("submit", (evento) => {
   // Leer los 5 campos. Todo lo que viene de un input es TEXTO: por eso Number() en el precio.
   const nombre = campoNombre.value;
   const precio = Number(campoPrecio.value);
-  const talla = campoTalla.value;
-  const categoria = campoCategoria.value;
+  const talla = campoTalla.value as Talla;
+  const categoria = campoCategoria.value as Categoria;
   const imagen = campoImagen.value;
 
   if (idEditando === null) {
