@@ -125,7 +125,12 @@ export function guardarProductos(lista) {
 export function obtenerProductos() {
     const guardado = localStorage.getItem("catalogo"); // texto guardado, o null si no hay nada.
     if (guardado) {
-        return JSON.parse(guardado); // texto -> lista de objetos.
+        const guardados = JSON.parse(guardado); // texto -> lista de objetos.
+        if (guardados.length > 0 && !guardados[0].tallas) {
+            guardarProductos(productos);
+            return productos;
+        }
+        return guardados;
     }
     else {
         guardarProductos(productos); // plan B: copia el inventario inicial al cuaderno.
