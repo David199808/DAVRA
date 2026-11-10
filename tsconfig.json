@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "rootDir": "./ts",
+    "outDir": "./js",
+    "target": "es2020",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "lib": ["dom", "esnext"],
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["ts"]
+}
