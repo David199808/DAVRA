@@ -39,13 +39,13 @@ const pedido = document.querySelector(".carrito__pedido")!;
 
 function mostrarCarrito() {
   lista.innerHTML = ""; // Vacia la lista: borra los <li> viejos antes de dibujar.
-  if (carritoNuevo.items.length === 0) {
+  if (carritoNuevo.obtenerItems().length === 0) {
     // Si el carrito esta vacio...
     mensajeVacio.hidden = false; // ...deja visible el mensaje, que ya esta escrito en el HTML ("tu carrito esta vacio")
   } else {
     // Si no...
     mensajeVacio.hidden = true; // ...esconde el mensaje porque hay productos.
-    carritoNuevo.items.forEach(({ id, nombre, talla, precio, cantidad, imagen }) => {
+    carritoNuevo.obtenerItems().forEach(({ id, nombre, talla, precio, cantidad, imagen }) => {
       //recorre el carrito desestructurando los datos de cada producto.
       const li = document.createElement("li"); // crea un li por CADA producto del carrito.
       li.classList.add("carrito__item");
@@ -55,7 +55,7 @@ function mostrarCarrito() {
       boton.textContent = "🗑️"; // escribe "quitar" en ese boton
       boton.addEventListener("click", () => {
         // Cuando haga click en el boton:
-        carritoNuevo.quitarProducto(id); // Quita el producto coon ese id (el boton recuerda su id gracias al closure)
+        carritoNuevo.quitarProducto(id, talla); // Quita el producto coon ese id (el boton recuerda su id gracias al closure)
         mostrarCarrito(); // Redibuja la pagina con los productos que quedan.
       });
       const subtotal = precio * cantidad;
@@ -90,7 +90,7 @@ pedido.addEventListener("click", () => {
     return; // carrito vacío: no hay nada que pedir.
   }
   // Una línea de texto por producto: "- Buzo - (M) x 2 = $ 190.000"
-  const lineas = carritoNuevo.items.map(({ nombre, talla, precio, cantidad }) => {
+  const lineas = carritoNuevo.obtenerItems().map(({ nombre, talla, precio, cantidad }) => {
     const subtotal = precio * cantidad;
     return `- ${nombre} - (${talla}) x ${cantidad} = ${formatoPesos.format(subtotal)}`;
   });

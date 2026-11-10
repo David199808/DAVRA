@@ -154,3 +154,36 @@ function buscarNombre(id) {
 
 console.log(buscarNombre(1));
 console.log(buscarNombre(9));
+
+// DADO UN TEXTO CUENTA CUANTAS VECES APARECE CADA VOCAL
+const videjuego = "grand thef auto";
+
+let totalVocalA = 0;
+let totalVocalE = 0;
+let totalVocalI = 0;
+let totalVocalO = 0;
+let totalVocalU = 0;
+
+for (let vocal of videjuego) {
+  if ("a".includes(vocal)) {
+    totalVocalA += 1;
+  }
+  if ("e".includes(vocal)) {
+    totalVocalE += 1;
+  }
+  if ("i".includes(vocal)) {
+    totalVocalI += 1;
+  }
+  if ("o".includes(vocal)) {
+    totalVocalO += 1;
+  }
+  if ("u".includes(vocal)) {
+    totalVocalU += 1;
+  }
+}
+
+console.log(totalVocalA);
+console.log(totalVocalE);
+console.log(totalVocalI);
+console.log(totalVocalO);
+console.log(totalVocalU);

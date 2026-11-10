@@ -14,10 +14,10 @@ export type Categoria = "hombre" | "mujer";
 export type Talla = "S" | "M" | "L" | "XL";
 
 export interface Producto {
-  id: number;
+  readonly id: number;
   nombre: string;
   precio: number;
-  talla: Talla;
+  tallas: Talla[];
   categoria: Categoria;
   imagen: string;
 }
@@ -28,7 +28,7 @@ const productos: Producto[] = [
     id: 1,
     nombre: "Buzo manga larga",
     precio: 95000,
-    talla: "M",
+    tallas: ["S", "M", "L", "XL"],
     categoria: "hombre",
     imagen: "../imagenes/buzo-manga-larga.jpg",
   },
@@ -36,7 +36,7 @@ const productos: Producto[] = [
     id: 2,
     nombre: "Pantalón ancho deportivo",
     precio: 150000,
-    talla: "M",
+    tallas: ["S", "M", "L", "XL"],
     categoria: "hombre",
     imagen: "../imagenes/pantalon-ancho-deportivo.jpg",
   },
@@ -44,7 +44,7 @@ const productos: Producto[] = [
     id: 3,
     nombre: "Jean Cargo Y2K",
     precio: 200000,
-    talla: "L",
+    tallas: ["S", "M", "L", "XL"],
     categoria: "hombre",
     imagen: "../imagenes/jean-cargo.jpg",
   },
@@ -52,7 +52,7 @@ const productos: Producto[] = [
     id: 4,
     nombre: "Hoodie Ribete",
     precio: 170000,
-    talla: "L",
+    tallas: ["S", "M", "L", "XL"],
     categoria: "hombre",
     imagen: "../imagenes/hoodie-ribete.jpg",
   },
@@ -60,7 +60,7 @@ const productos: Producto[] = [
     id: 5,
     nombre: "Camiseta negra cruz roja",
     precio: 120000,
-    talla: "L",
+    tallas: ["S", "M", "L", "XL"],
     categoria: "hombre",
     imagen: "../imagenes/camisa-negra-estampado.jpg",
   },
@@ -68,7 +68,7 @@ const productos: Producto[] = [
     id: 6,
     nombre: "Polo Los Ángeles",
     precio: 99000,
-    talla: "L",
+    tallas: ["S", "M", "L", "XL"],
     categoria: "hombre",
     imagen: "../imagenes/polo-los-angeles.jpg",
   },
@@ -77,7 +77,7 @@ const productos: Producto[] = [
     id: 7,
     nombre: "Top rojo cuello tortuga",
     precio: 80000,
-    talla: "S",
+    tallas: ["S", "M", "L", "XL"],
     categoria: "mujer",
     imagen: "../imagenes/mujer/top-cuello-tortuga.jpeg",
   },
@@ -85,7 +85,7 @@ const productos: Producto[] = [
     id: 8,
     nombre: "Saco blanco tejido",
     precio: 120000,
-    talla: "M",
+    tallas: ["S", "M", "L", "XL"],
     categoria: "mujer",
     imagen: "../imagenes/mujer/saco-tejido.jpeg",
   },
@@ -93,7 +93,7 @@ const productos: Producto[] = [
     id: 9,
     nombre: "Blusa cuello tortuga negro",
     precio: 90000,
-    talla: "M",
+    tallas: ["S", "M", "L", "XL"],
     categoria: "mujer",
     imagen: "../imagenes/mujer/blusa-cuello-tortuga-negra.jpeg",
   },
@@ -101,7 +101,7 @@ const productos: Producto[] = [
     id: 10,
     nombre: "Body asimétrico azul",
     precio: 65000,
-    talla: "S",
+    tallas: ["S", "M", "L", "XL"],
     categoria: "mujer",
     imagen: "../imagenes/mujer/body-asimetrico.jpeg",
   },
@@ -109,7 +109,7 @@ const productos: Producto[] = [
     id: 11,
     nombre: "Buzo amarillo rayas",
     precio: 75000,
-    talla: "M",
+    tallas: ["S", "M", "L", "XL"],
     categoria: "mujer",
     imagen: "../imagenes/mujer/buso-manga-corta-rayas.jpeg",
   },
@@ -117,7 +117,7 @@ const productos: Producto[] = [
     id: 12,
     nombre: "Body x2 piezas",
     precio: 140000,
-    talla: "M",
+    tallas: ["S", "M", "L", "XL"],
     categoria: "mujer",
     imagen: "../imagenes/mujer/conjunto-de-2-piezas.jpeg",
   },
@@ -125,7 +125,7 @@ const productos: Producto[] = [
     id: 13,
     nombre: "Corset de malla blanco",
     precio: 80000,
-    talla: "M",
+    tallas: ["S", "M", "L", "XL"],
     categoria: "mujer",
     imagen: "../imagenes/mujer/corset-de-malla.jpeg",
   },

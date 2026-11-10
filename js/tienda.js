@@ -44,7 +44,13 @@ function crearTarjeta(producto) {
     precio.textContent = formatoPesos.format(producto.precio);
     const talla = document.createElement("p");
     talla.classList.add("producto__talla");
-    talla.textContent = "Talla " + producto.talla;
+    const selecTalla = document.createElement("select");
+    producto.tallas.forEach((t) => {
+        const opcion = document.createElement("option");
+        opcion.value = t;
+        opcion.textContent = t;
+        selecTalla.append(opcion);
+    });
     const boton = document.createElement("button");
     boton.classList.add("producto__boton");
     boton.dataset.id = String(producto.id);
@@ -52,7 +58,7 @@ function crearTarjeta(producto) {
     // El botón nace ya conectado: así funciona sin importar cuándo se dibuje la tarjeta.
     boton.addEventListener("click", () => {
         // Cuando le hagan click.
-        carritoNuevo.agregarProducto(producto.id); // .... agrega a tu carrito, no el molde
+        carritoNuevo.agregarProducto(producto.id, selecTalla.value); // .... agrega a tu carrito, no el molde
         actualizarContador(); // Mantiene el contador 1+1+1
         // Confirmacion visual: el cliente ve "✓ Agregado" durante 1 segundo.
         boton.textContent = "✓ Agregado";
@@ -63,7 +69,7 @@ function crearTarjeta(producto) {
             boton.classList.remove("producto__boton--agregado"); // Cuando se agote el tiempo remueve esta clase
         }, 1000); // Cuanto esperar en milisegundos
     }); // Cierra el callback del clic y del addEventListener
-    tarjeta.append(foto, nombre, precio, talla, boton);
+    tarjeta.append(foto, nombre, precio, talla, selecTalla, boton);
     return tarjeta;
 }
 //----- Catalogo: FABRICA HTML end -----//

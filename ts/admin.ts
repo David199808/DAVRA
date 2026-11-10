@@ -24,7 +24,7 @@ const botonFormulario = document.querySelector(".admin__agregar")!;
 // Los 5 campos del formulario (se buscan una sola vez, aquí afuera)
 const campoNombre = document.querySelector<HTMLInputElement>("#nombre")!;
 const campoPrecio = document.querySelector<HTMLInputElement>("#precio")!;
-const campoTalla = document.querySelector<HTMLInputElement>("#talla")!;
+const casillasTalla = document.querySelectorAll<HTMLInputElement>('input[name="tallas"]');
 const campoCategoria = document.querySelector<HTMLInputElement>("#categoria")!;
 const campoImagen = document.querySelector<HTMLInputElement>("#imagen")!;
 
@@ -54,7 +54,7 @@ function crearFila(producto: Producto) {
   celdaCategoria.textContent = producto.categoria;
 
   const celdaTalla = document.createElement("td");
-  celdaTalla.textContent = producto.talla;
+  celdaTalla.textContent = producto.tallas.join(", ");
 
   const celdaPrecio = document.createElement("td");
   celdaPrecio.textContent = formatoPesos.format(producto.precio);
@@ -77,7 +77,9 @@ function crearFila(producto: Producto) {
     campoNombre.value = producto.nombre;
     campoImagen.value = producto.imagen;
     campoPrecio.value = String(producto.precio);
-    campoTalla.value = producto.talla;
+    casillasTalla.forEach((casilla) => {
+      casilla.checked = producto.tallas.includes(casilla.value as Talla);
+    });
     campoCategoria.value = producto.categoria;
     idEditando = producto.id; // recuerdo A QUIÉN estoy editando.
     botonFormulario.textContent = "Guardar"; // el dueño ves que está editando.
@@ -137,7 +139,9 @@ formulario.addEventListener("submit", (evento) => {
   // Leer los 5 campos. Todo lo que viene de un input es TEXTO: por eso Number() en el precio.
   const nombre = campoNombre.value;
   const precio = Number(campoPrecio.value);
-  const talla = campoTalla.value as Talla;
+  const tallas = Array.from(casillasTalla)
+    .filter((casilla) => casilla.checked)
+    .map((casilla) => casilla.value as Talla);
   const categoria = campoCategoria.value as Categoria;
   const imagen = campoImagen.value;
 
@@ -145,12 +149,12 @@ formulario.addEventListener("submit", (evento) => {
     // MODO AGREGAR: un producto nuevo con un turno nuevo de la máquina.
     const nuevoId = siguienteId();
     // Atajo de objeto { nombre } es lo mismo que { nombre: nombre }
-    const productoNuevo = { id: nuevoId, nombre, precio, talla, categoria, imagen };
+    const productoNuevo = { id: nuevoId, nombre, precio, tallas, categoria, imagen };
     productos.push(productoNuevo);
   } else {
     // MODO EDITAR: busco la posición de ese producto y reemplazo su linea, son su MISMO id.
     const posicion = productos.findIndex((item) => item.id === idEditando);
-    productos[posicion] = { id: idEditando, nombre, precio, talla, categoria, imagen };
+    productos[posicion] = { id: idEditando, nombre, precio, tallas, categoria, imagen };
   }
 
   // Esto pasa en los dos modos:

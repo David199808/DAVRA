@@ -6,10 +6,11 @@
 // Lo usan: tienda.js (hombre y mujer) y carrito-pagina.js.
 // =============================================
 
-import { obtenerProductos, Producto } from "./catalogo.js";
+import { obtenerProductos, Producto, Talla } from "./catalogo.js";
 
 interface ItemCarrito extends Producto {
   cantidad: number;
+  talla: Talla;
 }
 
 // Carrito: clase (molde) para crear carritos.
@@ -21,7 +22,7 @@ interface ItemCarrito extends Producto {
 //----- CONSTRUCTOR -----//
 
 export class Carrito {
-  items: ItemCarrito[];
+  private items: ItemCarrito[];
   constructor() {
     this.items = []; // Por defecto carrito vacío.
     const guardado = localStorage.getItem("carrito"); // saca el texto del casillero (o null).
@@ -36,7 +37,7 @@ export class Carrito {
         // Busca en el catalogo el producto actual con el mismo id.
         const actual = catalogo.find((producto) => producto.id === item.id)!;
         // retorna esos ultimos items con todo lo que ya trae en el catalogo datos actuales y solo la cantidad del recibo o 1
-        return { ...actual, cantidad: item.cantidad ?? 1 };
+        return { ...actual, cantidad: item.cantidad ?? 1, talla: item.talla ?? actual.tallas[0] };
       });
       this.guardar();
       //guarda en localStorage el carrito ya limpio.
@@ -45,6 +46,10 @@ export class Carrito {
   //----- CONSTRUCTOR END -----//
 
   //---------- METODOS ----------//
+
+  obtenerItems(): ItemCarrito[] {
+    return this.items;
+  }
 
   //----- GUARDAR EN LOCALSTORAGE -----//
   guardar() {
@@ -59,7 +64,7 @@ export class Carrito {
   //----- CONTAR TOTAL DE UNIDADES END ------//
 
   //----- AGREGAR PRODUCTOS -----//
-  agregarProducto(id: number) {
+  agregarProducto(id: number, talla: Talla) {
     // find: busca en el catalogo el producto con ese id (si no existe, prenda queda undefined)
     const prenda = obtenerProductos().find((producto) => producto.id === id);
     if (!prenda) {
@@ -68,7 +73,7 @@ export class Carrito {
     }
 
     // Busca en el CARRITO si este producto ya fue agregado (undefined si es nuevo)
-    const enCarrito = this.items.find((producto) => producto.id === id);
+    const enCarrito = this.items.find((producto) => producto.id === id && producto.talla === talla);
 
     if (enCarrito) {
       // ya está: le suma 1 a su cantidad (cambia el obejto que esta dentro de items)
@@ -76,7 +81,7 @@ export class Carrito {
     } else {
       // es nuevo: mete una COPIA de la prenda con cantidad 1
       // (copia con spread para no modificar el catálogo original)
-      this.items.push({ ...prenda, cantidad: 1 });
+      this.items.push({ ...prenda, cantidad: 1, talla });
     }
     this.guardar(); // en los dos casos, guarda el carrito en localStorage.
   }
@@ -89,9 +94,9 @@ export class Carrito {
   //----- CALCULAR EL TOTAL END -----//
 
   //----- QUITAR EL PRODUCTO -----//
-  quitarProducto(id: number) {
+  quitarProducto(id: number, talla: Talla) {
     // findIndex busca en el carrito la posicion del producto con ese id (-1 si no está).
-    const posicion = this.items.findIndex((producto) => producto.id === id);
+    const posicion = this.items.findIndex((producto) => producto.id === id && producto.talla === talla);
     if (posicion === -1) {
       // -1 = no está en el carrito. Se compara con === -1 y no con !posicion (0 es falsy).
       return; // no hay nada que quitar: sale sin hacer nada.
