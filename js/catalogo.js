@@ -125,12 +125,14 @@ export function guardarProductos(lista) {
 export function obtenerProductos() {
     const guardado = localStorage.getItem("catalogo"); // texto guardado, o null si no hay nada.
     if (guardado) {
-        const guardados = JSON.parse(guardado); // texto -> lista de objetos.
+        const guardados = JSON.parse(guardado); // texto a -> lista de objetos. La etiqueta Producto[] le dice a TS que trae
+        // revisa que la lista tenga al menos un producto y revisa que a ese primer producto le falten las tallas. Si pasan las dos cosas...
         if (guardados.length > 0 && !guardados[0].tallas) {
+            //...la copia es de antes del cambio, asi que guarda el inventario nuevo encima y devuele.
             guardarProductos(productos);
             return productos;
         }
-        return guardados;
+        return guardados; // si la copia si trae tallas se salta el if, devuelve lo guardado, con los cambios hechos en el admin.
     }
     else {
         guardarProductos(productos); // plan B: copia el inventario inicial al cuaderno.
