@@ -112,7 +112,15 @@ export class Carrito {
   }
   //----- QUITAR EL PRODUCTO END-----//
 
-  //----- MOSTRAR CONTENIDO CARRITO END-----//
+  //----- VACIAR CARRITO -----//
+
+  vaciarCarrito() {
+    this.items = [];
+    this.guardar();
+  }
+  //----- VACIAR CARRITO END -----//
+
+  //---------- METODOS ----------//
 }
-//---------- METODOS ----------//
+
 //----- CLASE END -----//

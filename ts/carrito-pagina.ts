@@ -28,6 +28,8 @@ const totalProductos = document.querySelector<HTMLElement>(".carrito__cantidad")
 
 const pedido = document.querySelector(".carrito__pedido")!;
 
+const botonVaciar = document.querySelector<HTMLElement>(".carrito__vaciar")!;
+
 //----- VATIABLES END -----//
 
 //----- FUNCIONES ----//
@@ -79,6 +81,13 @@ function mostrarCarrito() {
     totalProductos.textContent = `Tienes ${cantidadTotal} productos`;
   }
 }
+
+botonVaciar.addEventListener("click", () => {
+  if (carritoNuevo.contarUnidades() === 0) return;
+  if (!confirm(`¿Seguro que quieres eliminar ${carritoNuevo.contarUnidades()} productos?`)) return;
+  carritoNuevo.vaciarCarrito();
+  mostrarCarrito();
+});
 
 mostrarCarrito(); // Al cargar la página: dibuja el carrito por primera vez.
 

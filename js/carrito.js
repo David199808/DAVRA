@@ -91,6 +91,11 @@ export class Carrito {
         }
         this.guardar(); // Guarda los cambios en localStorage.
     }
+    //----- QUITAR EL PRODUCTO END-----//
+    //----- VACIAR CARRITO -----//
+    vaciarCarrito() {
+        this.items = [];
+        this.guardar();
+    }
 }
-//---------- METODOS ----------//
 //----- CLASE END -----//
