@@ -45,6 +45,7 @@ function crearTarjeta(producto: Producto) {
   foto.classList.add("producto__imagen");
   foto.src = producto.imagen;
   foto.alt = producto.nombre;
+  foto.loading = "lazy";
 
   const nombre = document.createElement("h2");
   nombre.classList.add("producto__titulo");

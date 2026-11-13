@@ -30,7 +30,7 @@ const productos: Producto[] = [
     precio: 95000,
     tallas: ["S", "M", "L", "XL"],
     categoria: "hombre",
-    imagen: "../imagenes/buzo-manga-larga.jpg",
+    imagen: "../imagenes/hombre/buzo-manga-larga.webp",
   },
   {
     id: 2,
@@ -38,7 +38,7 @@ const productos: Producto[] = [
     precio: 150000,
     tallas: ["S", "M", "L", "XL"],
     categoria: "hombre",
-    imagen: "../imagenes/pantalon-ancho-deportivo.jpg",
+    imagen: "../imagenes/hombre/pantalon-ancho-deportivo.webp",
   },
   {
     id: 3,
@@ -46,7 +46,7 @@ const productos: Producto[] = [
     precio: 200000,
     tallas: ["S", "M", "L", "XL"],
     categoria: "hombre",
-    imagen: "../imagenes/jean-cargo.jpg",
+    imagen: "../imagenes/hombre/jean-cargo.webp",
   },
   {
     id: 4,
@@ -54,7 +54,7 @@ const productos: Producto[] = [
     precio: 170000,
     tallas: ["S", "M", "L", "XL"],
     categoria: "hombre",
-    imagen: "../imagenes/hoodie-ribete.jpg",
+    imagen: "../imagenes/hombre/hoodie-ribete.webp",
   },
   {
     id: 5,
@@ -62,7 +62,7 @@ const productos: Producto[] = [
     precio: 120000,
     tallas: ["S", "M", "L", "XL"],
     categoria: "hombre",
-    imagen: "../imagenes/camisa-negra-estampado.jpg",
+    imagen: "../imagenes/hombre/camisa-negra-estampado.webp",
   },
   {
     id: 6,
@@ -70,7 +70,7 @@ const productos: Producto[] = [
     precio: 99000,
     tallas: ["S", "M", "L", "XL"],
     categoria: "hombre",
-    imagen: "../imagenes/polo-los-angeles.jpg",
+    imagen: "../imagenes/hombre/polo-los-angeles.webp",
   },
   //------ PRODUCTOS MUJER ------ //
   {
@@ -79,7 +79,7 @@ const productos: Producto[] = [
     precio: 80000,
     tallas: ["S", "M", "L", "XL"],
     categoria: "mujer",
-    imagen: "../imagenes/mujer/top-cuello-tortuga.jpeg",
+    imagen: "../imagenes/mujer/top-cuello-tortuga.webp",
   },
   {
     id: 8,
@@ -87,7 +87,7 @@ const productos: Producto[] = [
     precio: 120000,
     tallas: ["S", "M", "L", "XL"],
     categoria: "mujer",
-    imagen: "../imagenes/mujer/saco-tejido.jpeg",
+    imagen: "../imagenes/mujer/saco-tejido.webp",
   },
   {
     id: 9,
@@ -95,7 +95,7 @@ const productos: Producto[] = [
     precio: 90000,
     tallas: ["S", "M", "L", "XL"],
     categoria: "mujer",
-    imagen: "../imagenes/mujer/blusa-cuello-tortuga-negra.jpeg",
+    imagen: "../imagenes/mujer/blusa-cuello-tortuga-negra.webp",
   },
   {
     id: 10,
@@ -103,7 +103,7 @@ const productos: Producto[] = [
     precio: 65000,
     tallas: ["S", "M", "L", "XL"],
     categoria: "mujer",
-    imagen: "../imagenes/mujer/body-asimetrico.jpeg",
+    imagen: "../imagenes/mujer/body-asimetrico.webp",
   },
   {
     id: 11,
@@ -111,7 +111,7 @@ const productos: Producto[] = [
     precio: 75000,
     tallas: ["S", "M", "L", "XL"],
     categoria: "mujer",
-    imagen: "../imagenes/mujer/buso-manga-corta-rayas.jpeg",
+    imagen: "../imagenes/mujer/buso-manga-corta-rayas.webp",
   },
   {
     id: 12,
@@ -119,7 +119,7 @@ const productos: Producto[] = [
     precio: 140000,
     tallas: ["S", "M", "L", "XL"],
     categoria: "mujer",
-    imagen: "../imagenes/mujer/conjunto-de-2-piezas.jpeg",
+    imagen: "../imagenes/mujer/conjunto-de-2-piezas.webp",
   },
   {
     id: 13,
@@ -127,7 +127,7 @@ const productos: Producto[] = [
     precio: 80000,
     tallas: ["S", "M", "L", "XL"],
     categoria: "mujer",
-    imagen: "../imagenes/mujer/corset-de-malla.jpeg",
+    imagen: "../imagenes/mujer/corset-de-malla.webp",
   },
 ];
 
